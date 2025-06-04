@@ -4,11 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Halaman Akademik</title>
-    
-    <!-- Menghubungkan CSS navbar -->
-    <link href="{{ asset('public/css/akademik.css') }}" rel="stylesheet">
-    
-    @stack('styles')
+  
 </head>
 <body>
     <!-- Navbar -->
