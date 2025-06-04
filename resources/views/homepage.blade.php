@@ -10,8 +10,10 @@
         <div class='welcome'>
         <h1>TARTAR</h1><br><br>
         <a href='{{ route('login')}}'><button class= 'start-button' style='justify-content:center'>Get Started!</button></a>
+      
         </div>
     </div>
     </body>
+
 
 </html>
