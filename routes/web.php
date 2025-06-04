@@ -4,12 +4,15 @@ use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 
+
 Route::get('/', function(){
     return view('homepage');
-});
+})->name('homepage');
 
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
 Route::post('/login', [AuthController::class, 'login'])->name('login.create');
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
 
 //Disini bagian route-route tanpa middleware (Bagian awal dari website kita)
 //Taruh beberapa bagian route sebelum index.php ke sini guys;
