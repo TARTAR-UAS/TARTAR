@@ -1,0 +1,12 @@
+Sampel Mahasiswa: 
+Nama: Abel
+Jenis Kelamin: Perempuan
+Tanggal Lahir: 12 Maret 2004
+Tempat Lahir: Bandung 
+Alamat: Kampung Durian Runtuh
+No Telp: 081271237123
+Fakultas: Teknik
+Prodi: Teknologi Informatika 
+Email: Abel@gmail.com
+Password: A123
+   

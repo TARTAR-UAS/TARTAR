@@ -1,0 +1,32 @@
+body{
+    background-color: rgb(232, 244, 255);
+}
+
+.navbar{
+    list-style-type: none;
+    margin:0;
+    padding:0;
+    overflow: hidden;
+    background-color: rgb(72, 60, 196);
+}
+
+li{
+    display: inline;
+    height: 200px;
+}
+
+li a{
+    color: white;
+    width: 100px;
+    padding: 14px 16px;
+}
+
+li a:hover{
+    background-color: rgb(34, 26, 124);
+}
+
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}

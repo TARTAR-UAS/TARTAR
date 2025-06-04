@@ -1,0 +1,109 @@
+body{
+    /* background-image: linear-gradient(180deg, rgba(255, 255, 255, 0), rgba(241, 171, 171, 0.5)); */
+    background-color: rgb(232, 244, 255);
+}
+.parent-container{
+    height: 100vh; 
+    display: grid;
+    grid-template-areas: 
+    'form-area'
+    'bottom-text';
+    place-items: center;
+    column-gap: 3px;
+
+}
+
+.form-area{
+    display:grid;
+    gap:10px;
+    margin-top:20px;
+    background-color: white;
+    justify-content: center;
+    padding: 20px 10px 20px 10px;
+    grid-area: 'form-area';
+    border: 1px hidden;
+    border-radius: 20px 20px 20px 20px;
+    box-shadow: 0 4px 6px rgb(0,0,0,0.2);
+    width: 400px;
+    height: 300px;
+}
+
+.login-text{
+    font-family: 'Helvetica'; 
+    text-align: center;
+    color: rgb(41, 31, 145);
+}
+
+.form-area label{
+    font-family: Arial; 
+    width: 120px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: left;
+    font-size:18px;
+    font-weight: bold;
+    color: rgb(14, 8, 88);
+}
+
+.email-input{
+    font-family: Arial; 
+    width: 300px;
+    border: 1px hidden;
+    border-radius: 5px;
+    box-shadow: 4px 4px 2px rgb(0,0,0,0.25);
+    font-size:15px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    margin-bottom: 10px;
+}
+
+.password-input{
+    font-family: Arial; 
+    width: 300px;
+    border: 1px hidden;
+    border-radius: 5px;
+    box-shadow: 4px 4px 2px rgb(0,0,0,0.25);
+    font-size:15px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    margin-bottom: 10px;
+}
+
+.login-button{
+    font-family: Arial; 
+    background-color: rgb(41, 31, 145);
+    color: white;
+    width: 300px;
+    border: hidden;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    padding: 5px;
+    transition: ease-in-out 2s;
+}
+
+.login-button:hover {
+    background-color: rgb(24, 16, 109);
+}
+
+.bottom-text{
+    font-family: Helvetica;
+    grid-area: 'bottom-text';
+}
+
+.register-text{
+    margin-top: 0px;
+    text-align: center;
+    margin-bottom: 4px;
+}
+
+.admin-text{
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
