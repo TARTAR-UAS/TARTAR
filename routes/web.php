@@ -24,5 +24,5 @@ Route::post('/register3', [AuthController::class, 'register3'])->name('register.
 Route::get('/register3', [AuthController::class, 'showRegister3'])->name('register.step3');
 Route::get('/index', [AuthController::class,  'index'])->name('index');
 
-
+Route::get('/pembayaran',[MahasiswaController::class, 'showPembayaran'])->name('pembayaran');
 

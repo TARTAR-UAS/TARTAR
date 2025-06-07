@@ -11,6 +11,7 @@
          <li><a href="">Home</a></li>
          <li><a href="">News</a></li>
          <li><a href="/akademik">Akademik</a></li>
+         <li><a href="/pembayaran">Informasi Pembayaran</a></li>
          <li><a href="">About</a></li>
         </ul>
         <div class="logout-container">

@@ -19,4 +19,9 @@ class Mahasiswa extends Model
         'program_studi',
         'fakultas',
     ];
+
+    public function pembayaran()
+    {
+        return $this->hasMany(Pembayaran::class);
+    }
 }
