@@ -26,3 +26,10 @@ Route::get('/index', [AuthController::class,  'index'])->name('index');
 
 Route::get('/pembayaran',[MahasiswaController::class, 'showPembayaran'])->name('pembayaran');
 
+Route::get('/biodata', [MahasiswaController::class, 'biodata']);
+Route::get('/lengkapi-data', [MahasiswaController::class, 'lengkapiData']);
+Route::post('/lengkapi-data', [MahasiswaController::class, 'updateData']);
+Route::get('/ubah-no-hp', [MahasiswaController::class, 'ubahNoHp']);
+Route::post('/ubah-no-hp', [MahasiswaController::class, 'updateNoHp']);
+Route::get('/ubah-password', [MahasiswaController::class, 'ubahPassword']);
+Route::post('/ubah-password', [MahasiswaController::class, 'updatePassword']);
