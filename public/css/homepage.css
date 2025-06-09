@@ -11,7 +11,8 @@ body{
 
 .welcome{
     text-align: center;
-    font-family: Helvetica;
+    color: rgb(20, 12, 108);
+    font-family: Verdana;
 }
 
 .start-button{
