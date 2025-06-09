@@ -26,6 +26,22 @@
          <p class='register-text'> Jika belum mempunyai akun, silahkan <a href="{{route('register.step1')}}">klik disini</a></p>
          <p class='admin-text'> Untuk admin, silahkan <a href=>klik disini</a></p>
            </div>
+           <!--Menampilkan pesan error dengan styling di css -->
+           @if ($errors->any())
+            <div class='alert-container'>
+              <div class="alert-box">
+                <h2><strong>Error!</strong></h2>
+                <ul>
+                @foreach($errors->all() as $error)
+                    <li>{{$error}}</li>
+                @endforeach
+                </ul>
+                <a href='{{ route('login')}}'><button>Kembali</button></a>
+              </div>
+            </div>
+            @endif
+        </div>
+    </div>
         </div>
     </body>
 </html>

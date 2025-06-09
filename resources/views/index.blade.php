@@ -17,6 +17,6 @@
         <div class="logout-container">
             @include('logout')
         </div>
-        <h1 class='welcome-text'>Welcome Back {{$mahasiswa->nama}}</h1>
+        <h1 class='welcome-text'>Welcome Back {{$mahasiswa->nama_depan}}</h1>
     </body>
 </html>

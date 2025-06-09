@@ -9,20 +9,26 @@ Route::get('/', function(){
     return view('homepage');
 })->name('homepage');
 
-Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
-Route::post('/login', [AuthController::class, 'login'])->name('login.create');
-Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
-
+Route::controller(AuthController::class)->group(function() {
+    Route::get('/login','showLogin')->name('login');
+    Route::post('/login','login')->name('login.create');
+    Route::post('/logout','logout')->name('logout');
+    Route::post('/register1','register1')->name('register.step1.store');
+    Route::get('/register1','showRegister1')->name('register.step1');
+    Route::post('/register2','register2')->name('register.step2.store');
+    Route::get('/register2','showRegister2')->name('register.step2');
+    Route::post('/register3','register3')->name('register.step3.store');
+    Route::get('/register3','showRegister3')->name('register.step3');
+    Route::post('/register4','register4')->name('register.step4.store');
+    Route::get('/register4','showRegister4')->name('register.step4');
+    Route::post('/register5','register5')->name('register.step5.store');
+    Route::get('/register5','showRegister5')->name('register.step5');
+    Route::get('/index', 'index')->name('index');
+});
 
 //Disini bagian route-route tanpa middleware (Bagian awal dari website kita)
 //Taruh beberapa bagian route sebelum index.php ke sini guys;
-Route::post('/register1', [AuthController::class, 'register1'])->name('register.step1.store');
-Route::get('/register1', [AuthController::class, 'showRegister1'])->name('register.step1');
-Route::post('/register2', [AuthController::class, 'register2'])->name('register.step2.store');
-Route::get('/register2', [AuthController::class, 'showRegister2'])->name('register.step2');
-Route::post('/register3', [AuthController::class, 'register3'])->name('register.step3.store');
-Route::get('/register3', [AuthController::class, 'showRegister3'])->name('register.step3');
-Route::get('/index', [AuthController::class,  'index'])->name('index');
+
 
 Route::get('/pembayaran',[MahasiswaController::class, 'showPembayaran'])->name('pembayaran');
 
