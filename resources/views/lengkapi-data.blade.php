@@ -1,52 +1,76 @@
 @extends('layout')
+
 @section('content')
-<h2>Lengkapi Data Mahasiswa</h2>
-<form action="/lengkapi-data" method="POST">
-    @csrf
-    <input type="hidden" name="id" value="{{ $mahasiswa->id }}">
-    <div>
-        <label>NPM:</label>
-        <input type="text" name="npm" value="{{ $mahasiswa->npm }}">
-    </div>
-    <div>
-        <label>Nama:</label>
-        <input type="text" name="nama" value="{{ $mahasiswa->nama }}">
-    </div>
-    <div>
-        <label>Jenis Kelamin:</label>
-        <select name="jenis_kelamin">
-            <option value="Laki-laki" {{ $mahasiswa->jenis_kelamin == 'Laki-laki' ? 'selected' : '' }}>Laki-laki</option>
-            <option value="Perempuan" {{ $mahasiswa->jenis_kelamin == 'Perempuan' ? 'selected' : '' }}>Perempuan</option>
-        </select>
-    </div>
-    <div>
-        <label>Tanggal Lahir:</label>
-        <input type="date" name="tanggal_lahir" value="{{ $mahasiswa->tanggal_lahir }}">
-    </div>
-    <div>
-        <label>Tempat Lahir:</label>
-        <input type="text" name="tempat_lahir" value="{{ $mahasiswa->tempat_lahir }}">
-    </div>
-    <div>
-        <label>Alamat:</label>
-        <textarea name="alamat">{{ $mahasiswa->alamat }}</textarea>
-    </div>
-    <div>
-        <label>Angkatan:</label>
-        <input type="text" name="angkatan" value="{{ $mahasiswa->angkatan }}">
-    </div>
-    <div>
-        <label>Program Studi:</label>
-        <input type="text" name="program_studi" value="{{ $mahasiswa->program_studi }}">
-    </div>
-    <div>
-        <label>Fakultas:</label>
-        <input type="text" name="fakultas" value="{{ $mahasiswa->fakultas }}">
-    </div>
-    <div>
-        <label>Status:</label>
-        <input type="text" name="status" value="{{ $mahasiswa->status }}">
-    </div>
-    <button type="submit">Simpan</button>
-</form>
+<div class="container mt-4">
+    <h2>Lengkapi Data Mahasiswa</h2>
+    <form action="/lengkapi-data" method="POST">
+        @csrf
+        <input type="hidden" name="id" value="{{ $mahasiswa->id }}">
+        
+        <div class="mb-3">
+            <label>Nama Depan</label>
+            <input type="text" name="nama_depan" class="form-control" value="{{ $mahasiswa->nama_depan }}">
+        </div>
+        <div class="mb-3">
+            <label>Nama Belakang</label>
+            <input type="text" name="nama_belakang" class="form-control" value="{{ $mahasiswa->nama_belakang }}">
+        </div>
+        <div class="mb-3">
+            <label>Jenis Kelamin</label>
+            <select name="jenis_kelamin" class="form-select">
+                <option value="Laki-laki" {{ $mahasiswa->jenis_kelamin=='Laki-laki' ? 'selected' : '' }}>Laki-laki</option>
+                <option value="Perempuan" {{ $mahasiswa->jenis_kelamin=='Perempuan' ? 'selected' : '' }}>Perempuan</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label>Agama</label>
+            <select name="agama" class="form-select">
+                <option value="Islam" {{ $mahasiswa->agama=='Islam' ? 'selected' : '' }}>Islam</option>
+                <option value="Kristen" {{ $mahasiswa->agama=='Kristen' ? 'selected' : '' }}>Kristen</option>
+                <option value="Katolik" {{ $mahasiswa->agama=='Katolik' ? 'selected' : '' }}>Katolik</option>
+                <option value="Buddha" {{ $mahasiswa->agama=='Buddha' ? 'selected' : '' }}>Buddha</option>
+                <option value="Hindu" {{ $mahasiswa->agama=='Hindu' ? 'selected' : '' }}>Hindu</option>
+                <option value="Konghucu" {{ $mahasiswa->agama=='Konghucu' ? 'selected' : '' }}>Konghucu</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label>Tanggal Lahir</label>
+            <input type="date" name="tanggal_lahir" class="form-control" value="{{ $mahasiswa->tanggal_lahir }}">
+        </div>
+        <div class="mb-3">
+            <label>Tempat Lahir</label>
+            <input type="text" name="tempat_lahir" class="form-control" value="{{ $mahasiswa->tempat_lahir }}">
+        </div>
+        <div class="mb-3">
+            <label>Alamat</label>
+            <textarea name="alamat" class="form-control">{{ $mahasiswa->alamat }}</textarea>
+        </div>
+        <div class="mb-3">
+            <label>No Telp</label>
+            <input type="text" name="no_telp" class="form-control" value="{{ $mahasiswa->no_telp }}">
+        </div>
+        <div class="mb-3">
+            <label>Angkatan</label>
+            <input type="text" name="angkatan" class="form-control" value="{{ $mahasiswa->angkatan }}">
+        </div>
+        <div class="mb-3">
+            <label>Program Studi</label>
+            <input type="text" name="program_studi" class="form-control" value="{{ $mahasiswa->program_studi }}">
+        </div>
+        <div class="mb-3">
+            <label>Fakultas</label>
+            <input type="text" name="fakultas" class="form-control" value="{{ $mahasiswa->fakultas }}">
+        </div>
+        <div class="mb-3">
+            <label>Status</label>
+            <select name="status" class="form-select">
+                <option value="Aktif" {{ $mahasiswa->status=='Aktif' ? 'selected' : '' }}>Aktif</option>
+                <option value="Cuti" {{ $mahasiswa->status=='Cuti' ? 'selected' : '' }}>Cuti</option>
+                <option value="Lulus" {{ $mahasiswa->status=='Lulus' ? 'selected' : '' }}>Lulus</option>
+                <option value="Dropout" {{ $mahasiswa->status=='Dropout' ? 'selected' : '' }}>Dropout</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Simpan</button>
+    </form>
+</div>
 @endsection
