@@ -35,7 +35,7 @@ Route::controller(AuthController::class)->group(function() {
 
 Route::get('/pembayaran',[MahasiswaController::class, 'showPembayaran'])->name('pembayaran');
 
-Route::get('/biodata', [MahasiswaController::class, 'biodata']);
+Route::get('/biodata', [MahasiswaController::class, 'biodata'])->name('biodata');
 Route::get('/lengkapi-data', [MahasiswaController::class, 'lengkapiData']);
 Route::post('/lengkapi-data', [MahasiswaController::class, 'updateData']);
 Route::get('/ubah-no-hp', [MahasiswaController::class, 'ubahNoHp']);

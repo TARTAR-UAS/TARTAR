@@ -11,7 +11,7 @@
         <div class= 'navbar-area'>
          <ul id='navbar'>
           <li><a href="{{ route('index') }}">Home</a></li>
-          <li><a href="">Biodata</a></li>
+          <li><a href="{{ route('biodata') }}">Biodata</a></li>
           <li><a href="/akademik">Akademik</a></li>
           <li><a href="{{ route('pembayaran') }}">Informasi Pembayaran</a></li>
           <li><a href="">About</a></li>
