@@ -10,8 +10,10 @@ class Mahasiswa extends Model
 
     protected $fillable = [
         'user_id',
-        'nama',
+        'nama_depan',
+        'nama_belakang',
         'jenis_kelamin',
+        'agama',
         'tanggal_lahir',
         'tempat_lahir',
         'alamat',
@@ -19,6 +21,19 @@ class Mahasiswa extends Model
         'program_studi',
         'fakultas',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function histori_pendidikan(){
+        return $this->hasOne(Histori_Pendidikan::class);
+    }
+
+    public function orangtua(){
+        return $this->hasOne(Orangtua::class);
+    }
 
     public function pembayaran()
     {

@@ -15,8 +15,10 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
             $table->string('npm')->nullable()->unique();
-            $table->string('nama');
+            $table->string('nama_depan');
+            $table->string('nama_belakang');
             $table->enum('jenis_kelamin',['Laki-laki','Perempuan']);
+            $table->enum('agama', ['Islam', 'Kristen', 'Katolik', 'Buddha', 'Hindu', 'Konghucu']);
             $table->date('tanggal_lahir');
             $table->string('tempat_lahir');
             $table->mediumText('alamat');
