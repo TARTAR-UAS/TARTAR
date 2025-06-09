@@ -2,14 +2,14 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width">
-        <title>Login</title>
-        <link rel='stylesheet' href='{{ asset('css/login.css') }}'>
+        <title>Admin Login</title>
+        <link rel='stylesheet' href='{{ asset('css/admin-login.css') }}'>
     </head>
     <body>
         <div class='parent-container'>
          <div class='form-area'>
-         <h1 class='Login-text'>Login</h1>
-         <form action="{{route('login.create')}}" method="POST">
+         <h1 class='Login-text'>Login Admin</h1>
+         <form action="{{route('admin-login.create')}}" method="POST">
             @csrf
             <label>Email: </label>
             <br>
@@ -23,8 +23,7 @@
          </form>
          </div>
            <div class=bottom-text>
-         <p class='register-text'> Jika belum mempunyai akun, silahkan <a href="{{route('register.step1')}}">klik disini</a></p>
-         <p class='admin-text'> Untuk admin, silahkan <a href="{{route('admin-login')}}">klik disini</a></p>
+         <p class='back-text'>silahkan <a href="{{route('login')}}"> klik disini </a> untuk kembali ke login biasa</p>
            </div>
            <!--Menampilkan pesan error dengan styling di css -->
            @if ($errors->any())
@@ -36,7 +35,7 @@
                     <li>{{$error}}</li>
                 @endforeach
                 </ul>
-                <a href='{{ route('login')}}'><button>Kembali</button></a>
+                <a href='{{ route('admin-login')}}'><button>Kembali</button></a>
               </div>
             </div>
             @endif
