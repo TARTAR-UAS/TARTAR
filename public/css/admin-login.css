@@ -1,45 +1,39 @@
 /*mengatur seluruh bagian webpage*/
 body{
+    /* background-image: linear-gradient(180deg, rgba(255, 255, 255, 0), rgba(241, 171, 171, 0.5)); */
     background-color: rgb(232, 244, 255);
 }
 
 /*peraturan untuk parent container untuk dapat mendisplay sebagaimana yang diinginkan */
 .parent-container{
+    height: 100vh; 
     display: grid;
     grid-template-areas: 
-    'top-text'
-    'form-area';
-    height: 90vh;
+    'form-area'
+    'bottom-text';
     place-items: center;
 }
 
-.top-text{
-    color: rgb(34, 26, 124);
-    grid-area: 'top-text';
-    justify-self: center;
-    width: 550px;
-}
-
-.title{
-    font-family: 'Helvetica'; 
-    margin-bottom: 10px;
-}
-
-.sub-title{
-    font-family: 'Helvetica';
-    text-align: left;
-    margin-bottom:4px;
-}
-
+/*Pengaturan container form*/
 .form-area{
-    padding: 30px 10px 20px 30px;
-    grid-area: 'form-area';
+    display:grid;
+    gap:10px;
+    margin-top:20px;
     background-color: white;
+    justify-content: center;
+    padding: 20px 10px 20px 10px;
+    grid-area: 'form-area';
     border: 1px hidden;
-    border-radius: 20px;
+    border-radius: 20px 20px 20px 20px;
     box-shadow: 0 4px 6px rgb(0,0,0,0.2);
-    width: 600px;
-    height: 515px;
+    width: 400px;
+    height: 300px;
+}
+
+.login-text{
+    font-family: 'Helvetica'; 
+    text-align: center;
+    color: rgb(41, 31, 145);
 }
 
 .form-area label{
@@ -48,27 +42,14 @@ body{
     padding-top: 10px;
     padding-bottom: 10px;
     text-align: left;
-    font-size:16px;
+    font-size:18px;
     font-weight: bold;
     color: rgb(14, 8, 88);
 }
 
-
-.form-area input{
+.email-input{
     font-family: Arial; 
-    width: 530px;
-    border: 1px hidden;
-    border-radius: 5px;
-    box-shadow: 4px 4px 2px rgb(0,0,0,0.25);
-    font-size:15px;
-    padding-top: 4px;
-    padding-bottom: 4px;
-    margin-bottom: 10px;
-}
-
-.form-area select{
-    font-family: Arial; 
-    width: 530px;
+    width: 300px;
     border: 1px hidden;
     border-radius: 5px;
     box-shadow: 4px 4px 2px rgb(0,0,0,0.25);
@@ -77,19 +58,24 @@ body{
     padding-bottom: 2px;
     margin-bottom: 10px;
 }
-/*Pengaturan button div*/
-.button-wrapper{
-    display:flex;
-    justify-content: center;
+
+.password-input{
+    font-family: Arial; 
+    width: 300px;
+    border: 1px hidden;
+    border-radius: 5px;
+    box-shadow: 4px 4px 2px rgb(0,0,0,0.25);
+    font-size:15px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    margin-bottom: 10px;
 }
 
-.next-button{
-    margin:10px 15px 0px 0px;
-    text-align: center;
+.login-button{
     font-family: Arial; 
     background-color: rgb(41, 31, 145);
     color: white;
-    width: 200px;
+    width: 300px;
     border: hidden;
     border-radius: 5px;
     cursor: pointer;
@@ -97,26 +83,25 @@ body{
     padding: 5px;
 }
 
-.next-button:hover {
+.login-button:hover {
     background-color: rgb(24, 16, 109);
 }
 
-.back-button{
-    margin:10px 15px 0px 0px;
+
+/*Pengaturan container untuk teks bawah*/
+.bottom-text{
+    font-family: Helvetica;
+    grid-area: 'bottom-text';
+}
+
+.back-text{
+    margin-top: 0;
     text-align: center;
-    font-family: Arial; 
-    background-color: rgb(41, 31, 145);
-    color: white;
-    width: 200px;
-    border: hidden;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 18px;
-    padding: 5px;
+    margin-bottom: 10px;
 }
 
-.back-button:hover {
-    background-color: rgb(24, 16, 109);
+.back-text a {
+    text-decoration: none;
 }
 
 /*Pengaturan alert container untuk error*/
@@ -152,9 +137,6 @@ body{
 
 .alert-box ul{
    text-align: left;
-   list-style-type: none;
-   margin: 0;
-   padding: 0;
 }
 
 .alert-box li{
@@ -177,8 +159,10 @@ body{
     background-color: rgb(24, 16, 109);
 }
 
-*{
-    margin: 0px;
-    padding: 0px;
+/*best practice, karena kita tidak ingin margin dan padding default 
+menggangu padding atau margin yang kita inginkan nantinya*/
+* {
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
 }

@@ -24,6 +24,9 @@ Route::controller(AuthController::class)->group(function() {
     Route::post('/register5','register5')->name('register.step5.store');
     Route::get('/register5','showRegister5')->name('register.step5');
     Route::get('/index', 'index')->name('index');
+    Route::get('/admin/login', 'showAdminLogin')->name('admin-login');
+    Route::post('/admin/login', 'adminLogin')->name('admin-login.create');
+    Route::get('/admin/index', 'adminIndex')->name('admin-index');
 });
 
 //Disini bagian route-route tanpa middleware (Bagian awal dari website kita)

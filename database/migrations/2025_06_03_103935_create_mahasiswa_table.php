@@ -26,7 +26,8 @@ return new class extends Migration
             $table->year('angkatan')->nullable();
             $table->string('program_studi');
             $table->string('fakultas');
-            $table->enum('status', ['Aktif', 'Cuti', 'Lulus', 'Dropout'])->nullable();
+            $table->enum('status_perkuliahan', ['Aktif', 'Cuti', 'Lulus', 'Dropout'])->nullable();
+            $table->enum('status_akun', ['pending', 'verified'])->nullable();
             $table->timestamps();
         });
     }

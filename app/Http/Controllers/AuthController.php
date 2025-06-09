@@ -211,11 +211,19 @@ class AuthController extends Controller
        return view('login');
     }
 
+    public function showAdminLogin(){
+        return view('admin-login');
+    }
+
     public function index(){
         //Memanggil user juga, untuk memastikan saat login, data pada user sesuai dengan data user tersebut di tabel lain
        $user = Auth::user(); 
        $mahasiswa = $user->mahasiswa; 
        return view('index',compact('mahasiswa'));
+    }
+
+    public function adminIndex(){
+       return view('admin-index');
     }
 
     public function login(Request $request){
@@ -225,8 +233,33 @@ class AuthController extends Controller
         ]);
 
         if(Auth::attempt($validated)){
+            if (Auth::user()->role !== 'Mahasiswa') {
+            Auth::logout();
+            return back()->with('error', 'Anda bukan mahasiswa.');
+            }
             $request->session()->regenerate();
             return redirect()->route('index');
+        }
+        else {
+            return back()->withErrors([
+                'login' => 'email atau password tidak benar',
+            ]);
+        }
+    }
+
+    public function adminLogin(Request $request){
+         $validated = $request->validate([
+            'email' => ['required', 'email'],
+            'password' => ['required']
+        ]);
+
+        if(Auth::attempt($validated)){
+            if (Auth::user()->role !== 'Admin') {
+            Auth::logout();
+            return back()->with('error', 'Anda bukan admin.');
+            }
+            $request->session()->regenerate();
+            return redirect()->route('admin-index');
         }
         else {
             return back()->withErrors([

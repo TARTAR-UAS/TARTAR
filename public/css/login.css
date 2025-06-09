@@ -82,7 +82,6 @@ body{
     cursor: pointer;
     font-size: 18px;
     padding: 5px;
-    transition: ease-in-out 2s;
 }
 
 .login-button:hover {
@@ -93,6 +92,10 @@ body{
 .bottom-text{
     font-family: Helvetica;
     grid-area: 'bottom-text';
+}
+
+.bottom-text a{
+    text-decoration: none;
 }
 
 .register-text{
