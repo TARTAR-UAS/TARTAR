@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('layout-admin')
 @section('content')
 <h2>Ubah Password</h2>
 <form action="/ubah-password" method="POST">

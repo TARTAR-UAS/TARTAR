@@ -28,13 +28,13 @@ class Mahasiswa extends Model
     }
 
     public function histori_pendidikan(){
-        return $this->hasOne(Histori_Pendidikan::class);
+        return $this->hasMany(Histori_Pendidikan::class, 'mahasiswa_id', 'id');
     }
 
-    public function orangtua(){
+    public function orangtua() {
         return $this->hasOne(Orangtua::class);
     }
-
+    
     public function pembayaran()
     {
         return $this->hasMany(Pembayaran::class);
