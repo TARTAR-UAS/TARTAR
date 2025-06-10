@@ -18,8 +18,8 @@ class Orangtua extends Model
         'no_telp_ibu',
     ];
 
-    public function mahasiswa()
-    {
-        return $this->belongsTo(Mahasiswa::class, 'mahasiswa_id');
+    public function mahasiswa() {
+        return $this->belongsTo(Mahasiswa::class);
     }
 }
+

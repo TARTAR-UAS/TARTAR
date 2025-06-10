@@ -4,6 +4,7 @@ use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 
+use function Pest\Laravel\put;
 
 Route::get('/', function(){
     return view('homepage');
@@ -36,9 +37,12 @@ Route::controller(AuthController::class)->group(function() {
 Route::get('/pembayaran',[MahasiswaController::class, 'showPembayaran'])->name('pembayaran');
 
 Route::get('/biodata', [MahasiswaController::class, 'biodata'])->name('biodata');
-Route::get('/lengkapi-data', [MahasiswaController::class, 'lengkapiData']);
-Route::post('/lengkapi-data', [MahasiswaController::class, 'updateData']);
-Route::get('/ubah-no-hp', [MahasiswaController::class, 'ubahNoHp']);
-Route::post('/ubah-no-hp', [MahasiswaController::class, 'updateNoHp']);
-Route::get('/ubah-password', [MahasiswaController::class, 'ubahPassword']);
-Route::post('/ubah-password', [MahasiswaController::class, 'updatePassword']);
+Route::match(['get', 'post', 'put'], '/admin/index/biodata-admin', [MahasiswaController::class, 'biodataAdmin'])->name('biodata-admin');
+Route::get('/lengkapi-data', [MahasiswaController::class, 'lengkapiData'])->name('lengkapi-data');
+Route::match(['get', 'post', 'put'], 'updateData', [MahasiswaController::class, 'updateData'])->name('lengkapi-data-update');
+Route::get('/ubah-password', [MahasiswaController::class, 'ubahPassword'])->name('ubah-password');
+Route::match(['get', 'post'], '/lengkapi-data-ortu', [MahasiswaController::class, 'ubahDataOrangtua'])->name('lengkapi-data-orangtua');
+Route::post('/update-data-ortu', [MahasiswaController::class, 'updateDataOrangtua'])->name('update-data-orangtua');
+Route::get('/lengkapi-data-pendidikan', [MahasiswaController::class, 'ubahDataPendidikan'])->name('lengkapi-data-pendidikan');
+Route::post('/update-data-pendidikan', [MahasiswaController::class, 'updateDataPendidikan'])->name('update-data-pendidikan');
+

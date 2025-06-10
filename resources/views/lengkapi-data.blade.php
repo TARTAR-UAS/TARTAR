@@ -1,10 +1,11 @@
-@extends('layout')
+@extends('layout-admin')
 
 @section('content')
 <div class="container mt-4">
     <h2>Lengkapi Data Mahasiswa</h2>
-    <form action="/lengkapi-data" method="POST">
+        <form action="{{ route('lengkapi-data-update', $mahasiswa->id) }}" method="POST">
         @csrf
+        @method('PUT')
         <input type="hidden" name="id" value="{{ $mahasiswa->id }}">
         
         <div class="mb-3">
@@ -48,7 +49,6 @@
         <div class="mb-3">
             <label>No Telp</label>
             <input type="text" name="no_telp" class="form-control" value="{{ $mahasiswa->no_telp }}">
-        </div>
         <div class="mb-3">
             <label>Angkatan</label>
             <input type="text" name="angkatan" class="form-control" value="{{ $mahasiswa->angkatan }}">
@@ -63,14 +63,16 @@
         </div>
         <div class="mb-3">
             <label>Status</label>
-            <select name="status" class="form-select">
-                <option value="Aktif" {{ $mahasiswa->status=='Aktif' ? 'selected' : '' }}>Aktif</option>
-                <option value="Cuti" {{ $mahasiswa->status=='Cuti' ? 'selected' : '' }}>Cuti</option>
-                <option value="Lulus" {{ $mahasiswa->status=='Lulus' ? 'selected' : '' }}>Lulus</option>
-                <option value="Dropout" {{ $mahasiswa->status=='Dropout' ? 'selected' : '' }}>Dropout</option>
+            <select name="status_perkuliahan" class="form-select">
+                <option value="Aktif" {{ $mahasiswa->status_perkuliahan=='Aktif' ? 'selected' : '' }}>Aktif</option>
+                <option value="Cuti" {{ $mahasiswa->status_perkuliahan=='Cuti' ? 'selected' : '' }}>Cuti</option>
+                <option value="Lulus" {{ $mahasiswa->status_perkuliahan=='Lulus' ? 'selected' : '' }}>Lulus</option>
+                <option value="Dropout" {{ $mahasiswa->status_perkuliahan=='Dropout' ? 'selected' : '' }}>Dropout</option>
             </select>
         </div>
         <button type="submit" class="btn btn-primary">Simpan</button>
     </form>
 </div>
 @endsection
+
+

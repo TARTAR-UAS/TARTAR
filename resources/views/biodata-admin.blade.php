@@ -1,9 +1,9 @@
-@extends('layout')
+@extends('layout-admin')
 
 @section('content')
 <div class="container mt-4">
-    <a href="{{ route('index') }}" class="btn btn-secondary mb-3">Kembali ke Beranda</a>
-    <h2>Biodata Mahasiswa</h2>
+    <a href="{{ route('biodata-admin') }}" class="btn btn-secondary mb-3">Kembali ke Beranda</a>
+    <h2>Biodata Mahasiswa (Admin)</h2>
     <table class="table table-bordered">
         <tr>
             <th>Nama Lengkap</th>
@@ -51,17 +51,20 @@
         </tr>
     </table>
 
-    <h3>Data Orang Tua</h3>
+        <h3>Data Orang Tua</h3>
     <table class="table table-bordered">
         <tr>
             <th>Nama Ayah</th>
             <td>{{ $mahasiswa->orangtua->nama_ayah }}</td>
-       </tr>
+        </tr>
         <tr>
             <th>No Telp Ayah</th>
             <td>{{ $mahasiswa->orangtua->no_telp_ayah }}</td>
         </tr>
         <tr>
+            <th>Pekerjaan Ayah</th>
+            <td>{{ $mahasiswa->orangtua->pekerjaan_ayah }}</td>
+        </tr> 
             <th>Nama Ibu</th>
             <td>{{ $mahasiswa->orangtua->nama_ibu }}</td>
         </tr>
@@ -69,6 +72,10 @@
             <th>No Telp Ibu</th>
             <td>{{ $mahasiswa->orangtua->no_telp_ibu }}</td>
         </tr>
+        <tr>
+            <th>Pekerjaan Ibu</th>
+            <td>{{ $mahasiswa->orangtua->pekerjaan_ibu }}</td>
+        </tr>    
     </table>
 
     <h3>Riwayat Pendidikan</h3>

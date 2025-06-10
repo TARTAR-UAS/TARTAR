@@ -13,8 +13,6 @@ class Histori_Pendidikan extends Model
         'nama_sekolah',
         'jenis_sekolah',
         'jurusan',
-        'tanggal_masuk',
-        'tanggal_lulus',
         'lokasi_sekolah',
         'nilai_akhir',
     ];
