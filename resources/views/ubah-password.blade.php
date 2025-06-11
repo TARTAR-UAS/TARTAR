@@ -1,17 +1,15 @@
-@extends('layout-admin')
-@section('content')
-<h2>Ubah Password</h2>
-<form action="/ubah-password" method="POST">
+<form action="{{ route('ubah-password') }}" method="POST">
     @csrf
-    <input type="hidden" name="id" value="{{ $user->id }}">
-    <div>
-        <label>Password Baru:</label>
-        <input type="password" name="password">
+
+    <div class="mb-3">
+        <label>Password Baru</label>
+        <input type="password" name="password" class="form-control" required>
     </div>
-    <div>
-        <label>Konfirmasi Password:</label>
-        <input type="password" name="password_confirmation">
+
+    <div class="mb-3">
+        <label>Konfirmasi Password</label>
+        <input type="password" name="password_confirmation" class="form-control" required>
     </div>
-    <button type="submit">Simpan</button>
+
+    <button type="submit" class="btn btn-primary">Simpan</button>
 </form>
-@endsection

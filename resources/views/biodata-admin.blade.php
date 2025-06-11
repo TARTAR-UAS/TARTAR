@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container mt-4">
-    <a href="{{ route('biodata-admin') }}" class="btn btn-secondary mb-3">Kembali ke Beranda</a>
+    <a href="{{ route('admin-index') }}" class="btn btn-secondary mb-3">Kembali ke Beranda</a>
     <h2>Biodata Mahasiswa (Admin)</h2>
     <table class="table table-bordered">
         <tr>
@@ -85,6 +85,7 @@
                 <th>No</th>
                 <th>Nama Sekolah</th>
                 <th>Nilai Akhir</th>
+                <th>Tanggal Masuk</th>
                 <th>Tanggal Lulus</th>
                 <th>Jenis Sekolah</th>
                 <th>Jurusan</th>
@@ -97,6 +98,7 @@
                 <td>{{ $index + 1 }}</td>
                 <td>{{ $pendidikan->nama_sekolah }}</td>
                 <td>{{ $pendidikan->nilai_akhir }}</td>
+                <td>{{ $pendidikan->tanggal_masuk }}</td>
                 <td>{{ $pendidikan->tanggal_lulus }}</td>
                 <td>{{ $pendidikan->jenis_sekolah }}</td>
                 <td>{{ $pendidikan->jurusan }}</td>
