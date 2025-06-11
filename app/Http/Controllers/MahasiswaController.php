@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Histori_Pendidikan;
+use App\Models\BiodataChangeRequest;
 use App\Models\Pendidikan;
 use App\Models\Mahasiswa;
 use Illuminate\Http\Request;
@@ -32,6 +33,76 @@ class MahasiswaController extends Controller
 
         return view('pembayaran', compact('dataPembayaran'));
     }
+
+    public function pilihKategori(){
+        return view('pilih-kategori');
+    }
+
+    public function formPengajuan($kategori) {
+        if (!in_array($kategori, ['mahasiswa', 'orangtua', 'pendidikan'])) {
+            abort(404);
+        }
+        return view("form-ajukan-$kategori");
+    }
+
+    public function ajukanPerubahanBiodata(Request $request){
+        $user = Auth::user();
+        $mahasiswa = $user->mahasiswa;
+
+        $dataPerubahan = $request->only([
+        'nama_depan', 'nama_belakang', 'jenis_kelamin', 'agama',
+        'tanggal_lahir','tempat_lahir', 'alamat',
+        'program_studi','fakultas', 
+        ]);
+
+        BiodataChangeRequest::create([
+        'mahasiswa_id' => $mahasiswa->id,
+        'kategori' => 'mahasiswa',
+        'data_baru' => $dataPerubahan,
+        'status' => 'pending'
+        ]);
+
+        return redirect()->route('biodata')->with('success', 'Permintaan perubahan biodata telah diajukan dan menunggu persetujuan admin.');
+    }   
+
+    public function ajukanPerubahanOrangTua(Request $request){
+        $user = Auth::user();
+        $mahasiswa = $user->mahasiswa;
+
+        $dataPerubahan = $request->only([
+        'nama_ayah', 'pekerjaan_ayah', 'no_telp_ayah', 
+        'nama_ibu', 'pekerjaan_ibu', 'no_telp_ibu',
+        ]);
+
+        BiodataChangeRequest::create([
+        'mahasiswa_id' => $mahasiswa->id,
+        'kategori' => 'orangtua',
+        'data_baru' => $dataPerubahan,
+        'status' => 'pending'
+        ]);
+
+        return redirect()->route('biodata')->with('success', 'Permintaan perubahan data orang tua telah diajukan dan menunggu persetujuan admin.');
+    }   
+
+    public function ajukanPerubahanPendidikan(Request $request){
+        $user = Auth::user();
+        $mahasiswa = $user->mahasiswa;
+
+        $dataPerubahan = $request->only([
+        'nama_sekolah', 'jenis_sekolah', 'jurusan',
+        'tanggal_masuk', 'tanggal_lulus', 'lokasi_sekolah',
+        'nilai_akhir', 
+        ]);
+
+        BiodataChangeRequest::create([
+        'mahasiswa_id' => $mahasiswa->id,
+        'kategori' => 'pendidikan',
+        'data_baru' => $dataPerubahan,
+        'status' => 'pending'
+        ]);
+
+        return redirect()->route('biodata')->with('success', 'Permintaan perubahan biodata telah diajukan dan menunggu persetujuan admin.');
+    }   
 
      // Tampilkan halaman Biodata
     public function biodata()
@@ -117,122 +188,4 @@ class MahasiswaController extends Controller
 
         return redirect()->route('biodata-admin')->with('success', 'Password berhasil diperbarui.');
     }
-
-
-    public function ubahDataOrangtua()
-    {
-        $user = Auth::user();
-        $mahasiswa = $user->mahasiswa;
-        
-        $orangtua = $mahasiswa->orangtua()->first();
-
-        return view('lengkapi-data-ortu', compact('mahasiswa', 'orangtua'));
-    }
-
-    public function updateDataOrangtua(Request $request)
-        {
-        $request->validate([
-            'nama_ayah' => 'nullable|string|max:255',
-            'pekerjaan_ayah' => 'nullable|string|max:255',
-            'no_telp_ayah' => 'nullable|string|max:20',
-            'nama_ibu' => 'nullable|string|max:255',
-            'pekerjaan_ibu' => 'nullable|string|max:255',
-            'no_telp_ibu' => 'nullable|string|max:20',
-        ]);
-
-        $user = Auth::user();
-        $mahasiswa = $user->mahasiswa;
-
-        Orangtua::updateOrCreate(
-            ['mahasiswa_id' => $mahasiswa->id],
-            [
-                'nama_ayah' => $request->nama_ayah,
-                'pekerjaan_ayah' => $request->pekerjaan_ayah,
-                'no_telp_ayah' => $request->no_telp_ayah,
-                'nama_ibu' => $request->nama_ibu,
-                'pekerjaan_ibu' => $request->pekerjaan_ibu,
-                'no_telp_ibu' => $request->no_telp_ibu,
-            ]
-        );
-
-        return redirect()->route('biodata-admin')->with('success', 'Data orang tua berhasil diperbarui.');
-    }
-
-
-    public function ubahDataPendidikan()
-    {
-        $user = Auth::user();
-        $mahasiswa = $user->mahasiswa;
-        if ($mahasiswa) {
-            $mahasiswa->load('histori_pendidikan');
-        }
-        
-        $pendidikan = Histori_Pendidikan::where('mahasiswa_id', $mahasiswa->id)->first();
-
-        
-        return view('lengkapi-data-pendidikan', compact('pendidikan'));
-    }
-
-    public function storeDataPendidikan(Request $request)
-    {
-        $request->validate([
-            'nama_sekolah' => 'required',
-            'jenis_sekolah' => 'required',
-            'tanggal_masuk' => 'required|date',
-        ]);
-
-        Histori_Pendidikan::create([
-            'mahasiswa_id'    => Auth::user()->mahasiswa->id,
-            'nama_sekolah'    => $request->nama_sekolah,
-            'jenis_sekolah'   => $request->jenis_sekolah,
-            'jurusan'         => $request->jurusan,
-            'lokasi_sekolah'  => $request->lokasi_sekolah,
-            'nilai_akhir'     => $request->nilai_akhir,
-            'tanggal_masuk'   => $request->tanggal_masuk,
-            'tanggal_lulus'   => $request->tanggal_lulus,
-        ]);
-
-        return redirect()->back()->with('success', 'Data pendidikan berhasil ditambahkan.');
-    }
-
-        public function updateDataPendidikan(Request $request)
-        {
-            $request->validate([
-                'nama_sekolah' => 'required|string|max:255',
-                'jenis_sekolah' => 'required|string',
-                'tanggal_masuk' => 'required|date',
-                'tanggal_lulus' => 'nullable|date|after_or_equal:tanggal_masuk',
-            ]);
-
-            $user = Auth::user();
-            $mahasiswa = $user->mahasiswa;
-
-            $pendidikan = $mahasiswa->histori_pendidikan()->first();
-
-            if ($pendidikan) {
-                $pendidikan->nama_sekolah = $request->nama_sekolah;
-                $pendidikan->jenis_sekolah = $request->jenis_sekolah;
-                $pendidikan->jurusan = $request->jurusan;
-                $pendidikan->lokasi_sekolah = $request->lokasi_sekolah;
-                $pendidikan->nilai_akhir = $request->nilai_akhir;
-                $pendidikan->tanggal_masuk = $request->tanggal_masuk;
-                $pendidikan->tanggal_lulus = $request->tanggal_lulus;
-                $pendidikan->save();
-            } else {
-                $mahasiswa->histori_pendidikan()->create([
-                    'nama_sekolah' => $request->nama_sekolah,
-                    'jenis_sekolah' => $request->jenis_sekolah,
-                    'jurusan' => $request->jurusan,
-                    'lokasi_sekolah' => $request->lokasi_sekolah,
-                    'nilai_akhir' => $request->nilai_akhir,
-                    'tanggal_masuk' => $request->tanggal_masuk,
-                    'tanggal_lulus' => $request->tanggal_lulus,
-                ]);
-            }
-
-            return redirect('/admin/index/biodata-admin')->with('success', 'Data pendidikan berhasil diperbarui.');
-            
-    }
-
-
 }

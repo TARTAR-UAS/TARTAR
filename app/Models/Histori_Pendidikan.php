@@ -12,6 +12,8 @@ class Histori_Pendidikan extends Model
         'mahasiswa_id',
         'nama_sekolah',
         'jenis_sekolah',
+        'tanggal_masuk',
+        'tanggal_lulus',
         'jurusan',
         'lokasi_sekolah',
         'nilai_akhir',

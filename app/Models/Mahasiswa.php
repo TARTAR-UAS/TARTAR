@@ -39,4 +39,8 @@ class Mahasiswa extends Model
     {
         return $this->hasMany(Pembayaran::class);
     }
+
+    public function biodataChangeRequests(){
+        return $this->hasMany(BiodataChangeRequest::class);
+    }
 }
