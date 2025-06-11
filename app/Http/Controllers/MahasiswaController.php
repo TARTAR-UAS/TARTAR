@@ -92,14 +92,32 @@ class MahasiswaController extends Controller
     }
 
     // Proses update Password User
+
     public function updatePassword(Request $request)
     {
-        $user = User::find($request->id);
-        $user->password = Hash::make($request->password);
-        $user->save();
+        $request->validate([
+            'password' => 'required|min:8|confirmed',
+        ]);
 
-        return redirect('biodata-admin')->with('success', 'Password berhasil diperbarui.');
+        $user = Auth::user();
+
+        if (!$user) {
+            return redirect()->back()->with('error', 'User tidak ditemukan.');
+        }
+
+        $user->password = Hash::make($request->password);
+
+        if ($user instanceof \App\Models\User) {
+            $user->save();
+        } else {
+            \App\Models\User::where('id', $user->id)->update([
+                'password' => $user->password,
+            ]);
+        }
+
+        return redirect()->route('biodata-admin')->with('success', 'Password berhasil diperbarui.');
     }
+
 
     public function ubahDataOrangtua()
     {
@@ -149,32 +167,72 @@ class MahasiswaController extends Controller
             $mahasiswa->load('histori_pendidikan');
         }
         
-        $pendidikan = $mahasiswa && $mahasiswa->histori_pendidikan ? $mahasiswa->histori_pendidikan : collect();
+        $pendidikan = Histori_Pendidikan::where('mahasiswa_id', $mahasiswa->id)->first();
+
         
         return view('lengkapi-data-pendidikan', compact('pendidikan'));
     }
 
-    public function updateDataPendidikan(Request $request)
+    public function storeDataPendidikan(Request $request)
     {
-    $user = Auth::user();
-    $mahasiswa = $user->mahasiswa;
+        $request->validate([
+            'nama_sekolah' => 'required',
+            'jenis_sekolah' => 'required',
+            'tanggal_masuk' => 'required|date',
+        ]);
 
- 
-    Histori_Pendidikan::where('mahasiswa_id', $mahasiswa->id)->delete();
+        Histori_Pendidikan::create([
+            'mahasiswa_id'    => Auth::user()->mahasiswa->id,
+            'nama_sekolah'    => $request->nama_sekolah,
+            'jenis_sekolah'   => $request->jenis_sekolah,
+            'jurusan'         => $request->jurusan,
+            'lokasi_sekolah'  => $request->lokasi_sekolah,
+            'nilai_akhir'     => $request->nilai_akhir,
+            'tanggal_masuk'   => $request->tanggal_masuk,
+            'tanggal_lulus'   => $request->tanggal_lulus,
+        ]);
 
-    if ($request->has('nama_sekolah')) {
-        foreach ($request->nama_sekolah as $index => $nama_sekolah) {
-            Histori_Pendidikan::create([
-                'mahasiswa_id'    => $mahasiswa->id,
-                'nama_sekolah'    => $nama_sekolah,
-                'jenis_sekolah'   => $request->jenis_sekolah[$index] ?? null,
-                'jurusan'         => $request->jurusan[$index] ?? null,
-                'lokasi_sekolah'  => $request->lokasi_sekolah[$index] ?? null,
-                'nilai_akhir'     => $request->nilai_akhir[$index] ?? null,
+        return redirect()->back()->with('success', 'Data pendidikan berhasil ditambahkan.');
+    }
+
+        public function updateDataPendidikan(Request $request)
+        {
+            $request->validate([
+                'nama_sekolah' => 'required|string|max:255',
+                'jenis_sekolah' => 'required|string',
+                'tanggal_masuk' => 'required|date',
+                'tanggal_lulus' => 'nullable|date|after_or_equal:tanggal_masuk',
             ]);
-        }
+
+            $user = Auth::user();
+            $mahasiswa = $user->mahasiswa;
+
+            $pendidikan = $mahasiswa->histori_pendidikan()->first();
+
+            if ($pendidikan) {
+                $pendidikan->nama_sekolah = $request->nama_sekolah;
+                $pendidikan->jenis_sekolah = $request->jenis_sekolah;
+                $pendidikan->jurusan = $request->jurusan;
+                $pendidikan->lokasi_sekolah = $request->lokasi_sekolah;
+                $pendidikan->nilai_akhir = $request->nilai_akhir;
+                $pendidikan->tanggal_masuk = $request->tanggal_masuk;
+                $pendidikan->tanggal_lulus = $request->tanggal_lulus;
+                $pendidikan->save();
+            } else {
+                $mahasiswa->histori_pendidikan()->create([
+                    'nama_sekolah' => $request->nama_sekolah,
+                    'jenis_sekolah' => $request->jenis_sekolah,
+                    'jurusan' => $request->jurusan,
+                    'lokasi_sekolah' => $request->lokasi_sekolah,
+                    'nilai_akhir' => $request->nilai_akhir,
+                    'tanggal_masuk' => $request->tanggal_masuk,
+                    'tanggal_lulus' => $request->tanggal_lulus,
+                ]);
+            }
+
+            return redirect('/admin/index/biodata-admin')->with('success', 'Data pendidikan berhasil diperbarui.');
+            
     }
 
-    return redirect()->route('biodata-admin')->with('success', 'Data pendidikan berhasil diperbarui.');
-    }
+
 }
