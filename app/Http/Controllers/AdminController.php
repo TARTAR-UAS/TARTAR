@@ -6,6 +6,7 @@ use App\Models\Orangtua;
 use App\Models\BiodataChangeRequest;
 use App\Models\Histori_Pendidikan;
 use App\Models\Mahasiswa;
+use App\Models\Pembayaran;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -63,5 +64,25 @@ class AdminController extends Controller {
         $permintaan->save();
 
         return back()->with('error', 'Permintaan biodata ditolak.');
+    }
+
+    public function ubahStatusPembayaran($id)
+    {
+        $pembayaran = Pembayaran::findOrFail($id);
+
+        if ($pembayaran->status === 'sudah bayar') {
+            return back()->with('info', 'Status sudah lunas.');
+        }
+
+        $pembayaran->status = 'sudah bayar';
+        $pembayaran->save();
+
+        return back()->with('success', 'Status pembayaran berhasil diubah menjadi sudah bayar.');
+    }
+
+    public function listPembayaran()
+    {
+        $pembayarans = Pembayaran::with('mahasiswa')->get();
+        return view('admin.pembayaran-admin', compact('pembayarans'));
     }
 }

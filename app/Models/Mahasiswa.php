@@ -37,7 +37,7 @@ class Mahasiswa extends Model
     
     public function pembayaran()
     {
-        return $this->hasMany(Pembayaran::class);
+        return $this->hasMany(Pembayaran::class, 'mahasiswa_id');
     }
 
     public function biodataChangeRequests(){

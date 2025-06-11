@@ -13,7 +13,7 @@
           <li><a href="{{ route('index') }}">Home</a></li>
           <li><a href="{{ route('permintaan-biodata') }}">Biodata</a></li>
           <li><a href="">Akademik</a></li>
-          <li><a href="">Informasi Pembayaran</a></li>
+          <li><a href="{{ route('list-pembayaran') }}">Informasi</a></li>
           <li><a href="">About</a></li>
          </ul>
         </div>

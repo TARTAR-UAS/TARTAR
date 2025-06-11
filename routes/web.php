@@ -61,3 +61,5 @@ Route::get('/edit-biodata', [AdminController::class, 'layoutAdmin'])->name('layo
 Route::get('/admin/permintaan-biodata', [AdminController::class, 'listPermintaanBiodata'])->name('permintaan-biodata');
 Route::post('/admin/permintaan-biodata/setujui/{id}', [AdminController::class, 'setujuiPermintaan']);
 Route::post('/admin/permintaan-biodata/tolak/{id}', [AdminController::class, 'tolakPermintaan']);
+Route::get('/admin/pembayaran', [AdminController::class, 'listPembayaran'])->name('list-pembayaran');
+Route::post('/admin/pembayaran/{id}/ubah-status', [AdminController::class, 'ubahStatusPembayaran'])->name('ubah-status-pembayaran');
