@@ -3,6 +3,7 @@
 use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AdminController;
 
 
 use function Pest\Laravel\put;
@@ -46,3 +47,17 @@ Route::match(['get', 'post'], '/lengkapi-data-ortu', [MahasiswaController::class
 Route::post('/update-data-ortu', [MahasiswaController::class, 'updateDataOrangtua'])->name('update-data-orangtua');
 Route::get('/lengkapi-data-pendidikan', [MahasiswaController::class, 'ubahDataPendidikan'])->name('lengkapi-data-pendidikan');
 Route::match(['post', 'put'], '/update-data-pendidikan', [MahasiswaController::class, 'updateDataPendidikan'])->name('update-data-pendidikan');
+
+
+Route::get('/edit-biodata', [MahasiswaController::class, 'editBiodata'])->name('editBiodata');
+Route::get('/ajukan', [MahasiswaController::class, 'pilihKategori'])->name('pilih-kategori');
+Route::get('/ajukan/{kategori}', [MahasiswaController::class, 'formPengajuan'])->name('form-ajukan');
+Route::post('/ajukan/mahasiswa', [MahasiswaController::class, 'ajukanPerubahanBiodata'])->name('form-pengubahan-mahasiswa');
+Route::post('/ajukan/orangtua', [MahasiswaController::class, 'ajukanPerubahanOrangtua'])->name('form-pengubahan-orangtua');
+Route::post('/ajukan/pendidikan', [MahasiswaController::class, 'ajukanPerubahanPendidikan'])->name('form-pengubahan-pendidikan');
+
+
+Route::get('/edit-biodata', [AdminController::class, 'layoutAdmin'])->name('layout-admin');
+Route::get('/admin/permintaan-biodata', [AdminController::class, 'listPermintaanBiodata'])->name('permintaan-biodata');
+Route::post('/admin/permintaan-biodata/setujui/{id}', [AdminController::class, 'setujuiPermintaan']);
+Route::post('/admin/permintaan-biodata/tolak/{id}', [AdminController::class, 'tolakPermintaan']);

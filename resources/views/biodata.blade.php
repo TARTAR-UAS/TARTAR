@@ -102,4 +102,4 @@
             @endforelse
         </tbody>
     </table>
-
+<a href="{{ route('pilih-kategori') }}" style="bg-blue-500 text-white px-3 py-2 rounded"> Ajukan Perubahan Data </a> 

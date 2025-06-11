@@ -156,6 +156,9 @@ class AuthController extends Controller
             'password' => ['required'],
         ]);
 
+        $request->session()->put('register.email', $validated['email']);
+        $request->session()->put('register.password', $validated['password']);
+
         $user = User::create([
             'email' => $validated['email'],
             'password' => Hash::make($validated['password']),
