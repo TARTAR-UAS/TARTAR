@@ -15,6 +15,34 @@ class AdminController extends Controller {
     public function layoutAdmin(){
         return view('layout-admin');
     }
+
+    public function showManajemenAkun(){
+        $queryMahasiswaPending = Mahasiswa::where('status_akun', 'Pending');
+        $mahasiswaPending = $queryMahasiswaPending->paginate(10);
+        return view('admin.manajemen-akun', compact('mahasiswaPending'));
+    }
+
+    public function terimaVerifikasi($id){
+        $mahasiswa = Mahasiswa::findOrfail($id);
+        $prefix = '535200';
+        $suffix = $mahasiswa->id;
+
+        $mahasiswa->npm = $prefix . $suffix;
+        $mahasiswa->status_akun = 'Verified';
+        $mahasiswa->status_perkuliahan = 'Aktif';
+        $mahasiswa->angkatan = '2025';
+        $mahasiswa->save();
+        return back()->with('success', 'Akun mahasiswa berhasil diverifikasi');
+    }
+
+    public function tolakVerifikasi($id){
+        $mahasiswa = Mahasiswa::findOrfail($id);
+
+        $mahasiswa-> status_akun = 'Rejected';
+        $mahasiswa->save();
+        return back()->with('success', 'Akun mahasiswa berhasil ditolak');
+    }
+
     public function listPermintaanBiodata(){
         $permintaan = BiodataChangeRequest::where('status', 'pending')->get();
         return view('admin.permintaan-biodata', compact('permintaan'));

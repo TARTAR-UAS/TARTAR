@@ -125,7 +125,22 @@ class AuthController extends Controller
     }
 
     public function register5(Request $request){
-        $data = [
+        $validated = $request->validate([
+            'email' => ['required', 'email'],
+            'password' => ['required'],
+        ]);
+
+        $request->session()->put('register.email', $validated['email']);
+        $request->session()->put('register.password', $validated['password']);
+        return redirect()->route('register.confirm');
+    }
+
+    public function showConfirmation(){
+        return view('register.confirmation');
+    }
+
+    public function confirmData(Request $request){
+         $data = [
             'nama_depan' => session('register.nama_depan'),
             'nama_belakang' => session('register.nama_belakang'),
             'jenis_kelamin' => session('register.jenis_kelamin'),
@@ -149,19 +164,13 @@ class AuthController extends Controller
             'no_telp_ibu' => session('register.no_telp_ibu'), 
             'fakultas' => session('register.fakultas'),
             'program_studi' => session('register.program_studi'), 
+            'email' => session('register.email'),
+            'password' => session('register.password')
         ];
 
-        $validated = $request->validate([
-            'email' => ['required', 'email'],
-            'password' => ['required'],
-        ]);
-
-        $request->session()->put('register.email', $validated['email']);
-        $request->session()->put('register.password', $validated['password']);
-
-        $user = User::create([
-            'email' => $validated['email'],
-            'password' => Hash::make($validated['password']),
+         $user = User::create([
+            'email' => $data['email'],
+            'password' => Hash::make($data['password']),
             'role' => 'Mahasiswa',
         ]); 
 
@@ -178,7 +187,7 @@ class AuthController extends Controller
             'alamat' => $data['alamat'],
             'no_telp' => $data['no_telp'],
             'fakultas' => $data['fakultas'],
-            'program_studi' => $data['program_studi']
+            'program_studi' => $data['program_studi'], 
           ]);
           //Melakukan pengecekan ke mahasiswa, karena histori pendidikan dan orantua punya foreign key mahasiswa
            if($mahasiswa && $mahasiswa->id)
@@ -207,6 +216,7 @@ class AuthController extends Controller
         } else {
          return back()->with('error', 'User gagal dibuat');
         }
+        $request->session()->forget('register');
         return redirect()->route('login');
     }
 
@@ -226,7 +236,8 @@ class AuthController extends Controller
     }
 
     public function adminIndex(){
-       return view('admin-index');
+       $mahasiswaPending = Mahasiswa::where('status_akun', 'pending')->count();
+       return view('admin-index', compact('mahasiswaPending'));
     }
 
     public function login(Request $request){
@@ -236,9 +247,20 @@ class AuthController extends Controller
         ]);
 
         if(Auth::attempt($validated)){
-            if (Auth::user()->role !== 'Mahasiswa') {
-            Auth::logout();
-            return back()->with('error', 'Anda bukan mahasiswa.');
+            $user = Auth::user();
+            if ($user->role !== 'Mahasiswa') {
+                Auth::logout();
+                return back()->withErrors(['Anda bukan mahasiswa.']);
+            }
+
+            $mahasiswa = Mahasiswa::where('user_id', $user->id)->first();
+
+            if($mahasiswa->status_akun === 'Pending'){
+                Auth::logout();
+                return back()->withErrors(['Akun anda belum diverifikasi oleh admin.']);
+            } else if ($mahasiswa->status_akun === 'Rejected') {
+                Auth::logout();
+                return back()->withErrors(['Akun anda telah ditolak oleh admin, hubungi pihak berkenan untuk konsultasi!']);
             }
             $request->session()->regenerate();
             return redirect()->route('index');
@@ -257,9 +279,10 @@ class AuthController extends Controller
         ]);
 
         if(Auth::attempt($validated)){
-            if (Auth::user()->role !== 'Admin') {
+            $user = Auth::user();
+            if ($user->role !== 'Admin') {
             Auth::logout();
-            return back()->with('error', 'Anda bukan admin.');
+            return back()->withErrors(['Anda bukan admin.']);
             }
             $request->session()->regenerate();
             return redirect()->route('admin-index');

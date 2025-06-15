@@ -105,8 +105,7 @@ class MahasiswaController extends Controller
     }   
 
      // Tampilkan halaman Biodata
-    public function biodata()
-    {
+    public function biodata(){
         $user = Auth::user();
         $mahasiswa = $user->mahasiswa;
         if ($mahasiswa) {
@@ -116,12 +115,15 @@ class MahasiswaController extends Controller
     }
 
     // Tampilkan halaman Biodata Admin
-    public function biodataAdmin()
-    {
-    $mahasiswa = Mahasiswa::find(Auth::user()->mahasiswa->id);
-    $orangtua = OrangTua::where('mahasiswa_id', $mahasiswa->id)->first();
+    public function biodataAdmin(){
+        $mahasiswa = Mahasiswa::find(Auth::user()->mahasiswa->id);
+        $orangtua = OrangTua::where('mahasiswa_id', $mahasiswa->id)->first();
 
-    return view('biodata-admin', compact('mahasiswa', 'orangtua'));
+        return view('biodata-admin', compact('mahasiswa', 'orangtua'));
+    }
+
+    public function showAkademik(){
+        return view('akademik');
     }
     // Tampilkan form Lengkapi Data
     public function lengkapiData()

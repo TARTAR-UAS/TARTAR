@@ -26,6 +26,8 @@ Route::controller(AuthController::class)->group(function() {
     Route::get('/register4','showRegister4')->name('register.step4');
     Route::post('/register5','register5')->name('register.step5.store');
     Route::get('/register5','showRegister5')->name('register.step5');
+    Route::post('/confirmation', 'confirmData')->name('register.confirm.store');
+    Route::get('/confirmation', 'showConfirmation')->name('register.confirm');
     Route::get('/index', 'index')->name('index');
     Route::get('/admin/login', 'showAdminLogin')->name('admin-login');
     Route::post('/admin/login', 'adminLogin')->name('admin-login.create');
@@ -55,7 +57,7 @@ Route::get('/ajukan/{kategori}', [MahasiswaController::class, 'formPengajuan'])-
 Route::post('/ajukan/mahasiswa', [MahasiswaController::class, 'ajukanPerubahanBiodata'])->name('form-pengubahan-mahasiswa');
 Route::post('/ajukan/orangtua', [MahasiswaController::class, 'ajukanPerubahanOrangtua'])->name('form-pengubahan-orangtua');
 Route::post('/ajukan/pendidikan', [MahasiswaController::class, 'ajukanPerubahanPendidikan'])->name('form-pengubahan-pendidikan');
-
+Route::get('/akademik', [MahasiswaController::class, 'showAkademik'])->name('akademik');
 
 Route::get('/edit-biodata', [AdminController::class, 'layoutAdmin'])->name('layout-admin');
 Route::get('/admin/permintaan-biodata', [AdminController::class, 'listPermintaanBiodata'])->name('permintaan-biodata');
@@ -63,3 +65,6 @@ Route::post('/admin/permintaan-biodata/setujui/{id}', [AdminController::class, '
 Route::post('/admin/permintaan-biodata/tolak/{id}', [AdminController::class, 'tolakPermintaan']);
 Route::get('/admin/pembayaran', [AdminController::class, 'listPembayaran'])->name('list-pembayaran');
 Route::post('/admin/pembayaran/{id}/ubah-status', [AdminController::class, 'ubahStatusPembayaran'])->name('ubah-status-pembayaran');
+Route::get('/admin/manajemen-akun', [AdminController::class, 'showManajemenAkun'])->name('manajemen-akun');
+Route::post('/admin/manajemen-akun/terima/{id}', [AdminController::class, 'terimaVerifikasi'])->name('terima-verifikasi');
+Route::post('/admin/manajemen-akun/tolak/{id}', [AdminController::class, 'tolakVerifikasi'])->name('tolak-verifikasi');

@@ -21,12 +21,12 @@
             <label>Nama Belakang: </label><br>
             <input type='text' name='nama_belakang' value="{{ old('nama_belakang', session('register.nama_belakang')) }}" placeholder='ex: Betradius'><br>
             <label>Jenis Kelamin: </label><br>
-            <select class= 'gender-input' name='jenis_kelamin' value="{{ old('jenis_kelamin', session('register.jenis_kelamin')) }}">
+            <select name='jenis_kelamin' value="{{ old('jenis_kelamin', session('register.jenis_kelamin')) }}">
                 <option value='Laki-laki'>Laki-laki</option>
                 <option value='Laki-laki'>Perempuan</option>
             </select><br>
             <label>Agama: </label><br>
-            <select class='agama-input' name='agama' value="{{ old('agama', session('register.agama')) }}">
+            <select name='agama' value="{{ old('agama', session('register.agama')) }}">
                 <option value='Islam'>Islam</option>
                 <option value='Kristen'>Kristen</option>
                 <option value='Katolik'>Katolik</option>
