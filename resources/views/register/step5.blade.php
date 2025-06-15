@@ -21,7 +21,7 @@
             <input type='password' name='password' value="{{ old('password', session('register.password'))}}"><br>
             <div class='button-wrapper'>
             <a href='{{route('register.step4')}}'><button class='back-button' type="button"> Back </button></a>
-            <button class='submit-button'> Submit </button>
+            <button class='next-button'> Next </button>
          </div>
         </form>
          <!--Menampilkan pesan error dengan styling di css -->

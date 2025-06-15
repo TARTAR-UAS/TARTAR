@@ -7,9 +7,8 @@ body{
 .parent-container{
     display: grid;
     grid-template-areas: 
-    ''
     'top-text'
-    'form-area';
+    'data-area';
     column-gap: 0;
     height: 90vh;
     place-items: center;
@@ -19,7 +18,8 @@ body{
     color: rgb(34, 26, 124);
     grid-area: 'top-text';
     justify-self: center;
-    width: 550px;
+    width: 600px;
+    margin: 10px 50px 0 0;
 }
 
 .title{
@@ -33,48 +33,78 @@ body{
     margin-bottom:4px;
 }
 /*Pengaturan container form*/
-.form-area{
-    padding: 30px 10px 10px 30px;
-    grid-area: 'form-area';
+.data-area{
+    padding: 30px 25px 10px 12px;
+    grid-area: 'data-area';
     background-color: white;
     border: 1px hidden;
     border-radius: 20px;
     box-shadow: 0 4px 6px rgb(0,0,0,0.2);
-    width: 600px;
-    height: 200px;
-    margin-top: -150px;
+    width: 650px;
+    height: 1000px;
+    margin-top: 5px;
 }
 
-.form-area label{
+.first-info-row{
+    display: flex;
+    align-items: center;
+    margin-bottom: 2px;
+    margin-top: -10px;
+}
+
+.first-info-row label{
+    width: 100px;
+}
+
+.first-info-row input{
+    flex: 1;
+    padding: 3px 0 3px 0;
+    margin-left: 10px;
+}
+
+.info-row{
+    display: flex;
+    align-items: center;
+    margin-bottom: 2px;
+}
+
+.info-row label{
+    width: 100px;
+}
+
+.info-row input{
+    flex: 1;
+    padding: 3px 0 3px 0;
+    margin-left: 10px;
+}
+
+.data-area label{
     font-family: Arial; 
-    width: 120px;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    width: 200px;
+    margin: 8px 0 8px 0;
     text-align: left;
     font-size:16px;
     font-weight: bold;
     color: rgb(14, 8, 88);
 }
 
-
-.form-area input{
+.data-area input{
+    color:rgb(120, 120, 120);
     font-family: Arial; 
-    width: 530px;
+    width: 250px;
     border: 1px hidden;
     border-radius: 5px;
     box-shadow: 4px 4px 2px rgb(0,0,0,0.25);
-    font-size:15px;
-    padding-top: 4px;
-    padding-bottom: 4px;
-    margin-bottom: 10px;
+    font-size:12px;
 }
 
 .button-wrapper{
+    margin-top: 10px;
     display:flex;
     justify-content: center;
 }
-.next-button{
-    margin:10px 15px 0px 0px;
+.submit-button{
+    margin:10px 0px 0px 0px;
     text-align: center;
     font-family: Arial; 
     background-color: rgb(41, 31, 145);
@@ -87,7 +117,7 @@ body{
     padding: 5px;
 }
 
-.next-button:hover {
+.submit-button:hover {
     background-color: rgb(24, 16, 109);
 }
 
@@ -109,62 +139,6 @@ body{
     background-color: rgb(24, 16, 109);
 }
 
-.alert-container{
-    position: fixed;
-    top: 0;
-    left: 0;
-    display: flex;
-    background: rgba(255, 255, 255, 0.8);
-    width: 100vw;
-    height: 100vh;
-    border-radius: 10px;
-    justify-content: center;
-    align-items: center;
-}
-
-.alert-box{
-    background: #fdfffa;
-    padding: 30px;
-    border: hidden 2px;
-    border-radius: 10px;
-    box-shadow: 4px 4px 2px rgb(0,0,0,0.25);
-    width: 90%;
-    max-width: 400px;
-    text-align: center;
-}
-
-.alert-box h2{
-   font-family: 'Helvetica'; 
-   color:  rgb(41, 31, 145);
-   margin-bottom: 25px;
-}
-
-.alert-box ul{
-   text-align: left;
-   list-style-type: none;
-   margin: 0;
-   padding: 0;
-}
-
-.alert-box li{
-   font-family: 'Arial'; 
-   text-align: left;
-   margin-bottom: 10px;
-}
-
-.alert-box button {
-    font-family: 'Helvetica'; 
-    padding: 10px 20px;
-    background-color: rgb(41, 31, 145);
-    color: white;
-    border: hidden;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.alert-box button:hover {
-    background-color: rgb(24, 16, 109);
-}
 
 /*best practice, karena kita tidak ingin margin dan padding default 
 menggangu padding atau margin yang kita inginkan nantinya*/

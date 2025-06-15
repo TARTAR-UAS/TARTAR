@@ -27,7 +27,7 @@ return new class extends Migration
             $table->string('program_studi');
             $table->string('fakultas');
             $table->enum('status_perkuliahan', ['Aktif', 'Cuti', 'Lulus', 'Dropout'])->nullable();
-            $table->enum('status_akun', ['pending', 'verified'])->nullable();
+            $table->enum('status_akun', ['Pending', 'Verified', 'Rejected'])->default('Pending');
             $table->timestamps();
         });
     }

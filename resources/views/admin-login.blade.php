@@ -13,11 +13,11 @@
             @csrf
             <label>Email: </label>
             <br>
-            <input class='email-input' type='email' name='email' placeholder='ex: wijaya@gmail.com'>
+            <input type='email' name='email' placeholder='ex: wijaya@gmail.com'>
             <br>
             <label>Password: </label>
             <br>
-            <input class='password-input' type='password' name='password'>
+            <input type='password' name='password'>
             <br><br>
             <button class='login-button' type='submit'> Login </button>
          </form>

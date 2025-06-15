@@ -6,22 +6,35 @@
     <link rel='stylesheet' href='{{ asset('css/admin-index.css') }}'>
     </head>
     <body>
-    <div class='parent-containter'>
-        <div class ='header'>TARTAR</div>
-        <div class= 'navbar-area'>
-         <ul id='navbar'>
-          <li><a href="{{ route('index') }}">Home</a></li>
-          <li><a href="{{ route('permintaan-biodata') }}">Biodata</a></li>
-          <li><a href="">Akademik</a></li>
-          <li><a href="{{ route('list-pembayaran') }}">Informasi</a></li>
-          <li><a href="">About</a></li>
+    <div class='parent-container'>
+        <div class ='sidebar'>
+         <div class= 'navbar-area'>
+             <div class ='header'>
+                <h1>TARTAR</h1>
+                <h3>Admin Dashboard</h3>
+             </div>
+          <ul id='navbar'>
+           <li><a href="{{ route('admin-index') }}">Home</a></li>
+           <li><a href="{{ route('manajemen-akun') }}">Manajemen Akun</a></li>
+           <li><a href="{{ route('permintaan-biodata') }}">Biodata</a></li>
+           <li><a href="">Akademik</a></li>
+           <li><a href="{{ route('list-pembayaran') }}">Informasi</a></li>
          </ul>
-        </div>
-         <div class="logout-container">
-            @include('logout')
          </div>
+        </div>
+           
+        @auth
+         <div class="logout-container">
+            <form method="POST" action="{{ route('logout') }}">
+                @csrf
+                 <button type="submit" class="logout-button">Logout</button>
+            </form>
+          </div>
+        @endauth
          <div class='text-area'>
-         <h1 class='welcome-text'>Welcome Back Admin!</h1>
+          <h1 class='welcome-text'>Welcome Back Admin!</h1>
+          <p class='pending-account-text'>Ada sekitar <span class="pending-number">{{$mahasiswaPending}}</span> akun yang belum di verifikasi,
+           pergilah ke menu Manajemen Akun untuk mengecek akun!</p>
          </div>
     </div>
     </body>
