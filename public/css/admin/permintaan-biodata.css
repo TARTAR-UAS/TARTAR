@@ -8,7 +8,7 @@ body{
     height: 100vh;
     grid-template-columns: 20% 1fr;
     grid-template-areas: 
-    'sidebar verification-area';
+    'sidebar permintaan-area';
     column-gap: 5px;
 }
 
@@ -100,19 +100,19 @@ body{
    background-color: rgb(24, 16, 109);
 }
 
-.verification-area {
-    grid-area: verification-area;
+.permintaan-area {
+    grid-area: permintaan-area;
     margin: 30px;
 }
 
-.verification-area h1{
+.permintaan-area h1{
     font-family: Segoe UI;
     font-weight: bold;
     color: rgb(20, 12, 108);
     margin-bottom: 15px;
 }
 
-.verification-area p{
+.permintaan-area p{
     font-family: Segoe UI;
     font-weight: bold;
     color: rgb(20, 12, 108);
@@ -120,28 +120,28 @@ body{
     font-size: 20px;
 }
 
-.verification-area table, th, td {
+.permintaan-area table, th, td {
     border: solid 2px rgb(157, 157, 159);
     border-collapse: collapse;
 }
 
-.verification-area th, td {
+.permintaan-area th, td {
     padding: 5px;
 }
 
-.verification-area th {
+.permintaan-area th {
     font-family: Verdana;
-     background: rgb(34, 25, 135);
-    color: rgb(236, 236, 236);
+    background: rgb(34, 25, 135);
+    color: rgb(247, 239, 239);
     font-weight: bold;
 }
 
-.verification-area td{
+.permintaan-area td{
     font-family: Arial;
     text-align: center;
 }
 
-.verification-area button{
+.permintaan-area button{
     font-family: Arial;
     font-weight: bold;
     border: hidden;
@@ -153,8 +153,21 @@ body{
     cursor: pointer;
 }
 
-.verification-area button:hover{
+.permintaan-area button:hover{
     background:rgb(20, 12, 108);
+}
+
+.permintaan-area textarea{
+    resize: none;
+    width: 200px;
+    height: 100px;
+    max-width: 200px;
+    max-height: 100px;
+    border-radius: 5px;
+    border: 1px solid;
+    font-family: Arial;
+    padding: 2px;
+    margin: 1px;
 }
 
 
