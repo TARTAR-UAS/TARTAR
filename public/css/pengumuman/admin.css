@@ -1,0 +1,167 @@
+body{
+    background-color: rgb(232, 244, 255);
+}
+
+.parent-container{
+    display: grid;
+    justify-content: center;
+    height: 100vh;
+    grid-template-columns: 20% 1fr;
+    grid-template-areas: 
+    'sidebar pengumuman-area';
+    column-gap: 5px;
+}
+
+.sidebar{
+    grid-area: sidebar;
+    background-color:  rgb(26, 40, 77);
+    height: 100%;
+}
+
+.logout-container {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.logout-button {
+    background-color: rgb(14, 35, 94);
+    color: white;
+    padding: 8px 14px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.logout-button:hover {
+    background-color: rgb(59, 74, 124);
+}
+
+.header{
+    padding: 10px;
+    display: block;
+    height: 100px;
+    width: 100%;
+    text-align: center;
+    justify-self: center;
+    border-bottom: 1px solid rgb(113, 141, 206);
+    background-color:rgb(26, 40, 77);
+}
+
+.header h1{
+    font-family: Verdana;
+    font-size: 40px;
+    color:white;
+    font-weight: bold;
+}
+
+.header h3{
+    font-family: Verdana;
+    font-size: 20px;
+    color:white;
+    font-weight: bold;
+}
+
+.navbar-area {
+    grid-area: navbar-area;
+}
+
+#navbar{
+    display: flex;
+    flex-wrap: wrap;
+    list-style-type: none;
+    margin:0;
+    padding:0;
+    background-color: rgb(35, 31, 102);
+}
+
+.navbar-area li{
+    text-align: left;
+    align-items: center;
+    font-weight: bold;
+    font-family: arial;
+    display: block;
+    height: 100px;
+    width: 100%;
+    border-bottom: 1px solid rgb(113, 141, 206);
+}
+
+.navbar-area a{
+    color: white;
+    display: block;
+    font-size: 20px;
+    padding: 40px 0 0 40px;
+    text-decoration: none;
+}
+
+.navbar-area li:hover {
+   background-color: rgb(24, 16, 109);
+} 
+
+.pengumuman-area {
+    grid-area: pengumuman-area;
+    margin: 30px;
+}
+
+.pengumuman-area h1{
+    font-family: Segoe UI;
+    font-weight: bold;
+    color: rgb(20, 12, 108);
+    margin-bottom: 15px;
+}
+
+.pengumuman-area button{
+    font-family: Arial;
+    font-weight: bold;
+    border: hidden;
+    border-radius: 5px;
+    background:rgb(57, 46, 173);
+    color: white;
+    padding: 5px;
+    margin: 3px;
+    cursor: pointer;
+    display: inline;
+    font-size: 15px;
+    width: 200px;
+}
+
+.pengumuman-area button:hover{
+    background:rgb(20, 12, 108);
+}
+
+.add-button{
+    margin-bottom: 10px;
+}
+
+.pengumuman-inti{
+    text-align: center;
+    font-family: Arial;
+}
+
+.pengumuman-inti h3{
+    color: rgb(20, 12, 108);
+}
+
+.pengumuman-inti p{
+    justify-self: center;
+    border-radius: 5px;
+    border: inset 2px black;
+    background: white;
+    color: rgb(17, 13, 63);
+    padding: 5px;
+    margin: 5px;
+    width: 450px;
+}
+
+
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+}
