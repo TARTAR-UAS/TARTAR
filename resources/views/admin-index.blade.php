@@ -19,6 +19,7 @@
            <li><a href="{{ route('permintaan-biodata') }}">Biodata</a></li>
            <li><a href="">Akademik</a></li>
            <li><a href="{{ route('list-pembayaran') }}">Informasi</a></li>
+           <li><a href="{{ route('pengumuman-admin') }}">Pengumuman</a></li>
          </ul>
          </div>
         </div>

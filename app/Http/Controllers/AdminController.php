@@ -9,7 +9,7 @@ use App\Models\Mahasiswa;
 use App\Models\Pembayaran;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-
+use App\Models\Pengumuman;
 class AdminController extends Controller {
 
     public function layoutAdmin(){
@@ -112,5 +112,61 @@ class AdminController extends Controller {
     {
         $pembayarans = Pembayaran::with('mahasiswa')->get();
         return view('admin.pembayaran-admin', compact('pembayarans'));
+    }
+        public function pengumumanAdmin()
+    {
+        $pengumuman = Pengumuman::latest()->get();
+        return view('pengumuman.admin', compact('pengumuman'));
+    }
+
+    public function pengumumanCreate()
+    {
+        return view('pengumuman.create');
+    }
+
+    public function pengumumanStore(Request $request)
+    {
+        $request->validate([
+            'judul' => 'required|string|max:255',
+            'isi' => 'required|string',
+        ]);
+
+
+        Pengumuman::create([
+            'judul' => $request->judul,
+            'isi' => $request->isi,
+        ]);
+
+        return redirect()->route('pengumuman-admin')->with('success', 'Pengumuman berhasil ditambahkan.');
+    }
+
+    public function pengumumanEdit($id)
+    {
+        $pengumuman = Pengumuman::findOrFail($id);
+        return view('pengumuman.edit', compact('pengumuman'));
+    }
+
+    public function pengumumanUpdate(Request $request, $id)
+    {
+        $request->validate([
+            'judul' => 'required|string|max:255',
+            'isi' => 'required|string',
+        ]);
+
+        $pengumuman = Pengumuman::findOrFail($id);
+        $pengumuman->update([
+            'judul' => $request->judul,
+            'isi' => $request->isi,
+        ]);
+
+        return redirect()->route('pengumuman-admin')->with('success', 'Pengumuman berhasil diperbarui.');
+    }
+
+    public function pengumumanDelete($id)
+    {
+        $pengumuman = Pengumuman::findOrFail($id);
+        $pengumuman->delete();
+
+        return redirect()->route('pengumuman-admin')->with('success', 'Pengumuman berhasil dihapus.');
     }
 }

@@ -4,7 +4,7 @@ use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
-
+use App\Http\Controllers\PengumumanController;
 
 use function Pest\Laravel\put;
 
@@ -68,3 +68,13 @@ Route::post('/admin/pembayaran/{id}/ubah-status', [AdminController::class, 'ubah
 Route::get('/admin/manajemen-akun', [AdminController::class, 'showManajemenAkun'])->name('manajemen-akun');
 Route::post('/admin/manajemen-akun/terima/{id}', [AdminController::class, 'terimaVerifikasi'])->name('terima-verifikasi');
 Route::post('/admin/manajemen-akun/tolak/{id}', [AdminController::class, 'tolakVerifikasi'])->name('tolak-verifikasi');
+
+
+Route::get('/pengumuman', [PengumumanController::class, 'index']) ->name('pengumuman');
+
+Route::get('/admin/pengumuman', [AdminController::class, 'pengumumanAdmin']) ->name('pengumuman-admin');
+Route::get('/admin/pengumuman/create', [AdminController::class, 'pengumumanCreate'])->name('pengumuman-create');
+Route::post('/admin/pengumuman', [AdminController::class, 'pengumumanStore']) ->name('pengumuman-store');
+Route::get('/admin/pengumuman/edit/{id}', [AdminController::class, 'pengumumanEdit'])->name('pengumuman-edit');
+Route::put('/admin/pengumuman/{id}', [AdminController::class, 'pengumumanUpdate'])->name('pengumuman-update');
+Route::delete('/admin/pengumuman/{id}', [AdminController::class, 'pengumumanDelete']) ->name('pengumuman-delete');
