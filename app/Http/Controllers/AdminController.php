@@ -113,7 +113,8 @@ class AdminController extends Controller {
         $pembayarans = Pembayaran::with('mahasiswa')->get();
         return view('admin.pembayaran-admin', compact('pembayarans'));
     }
-        public function pengumumanAdmin()
+    
+    public function pengumumanAdmin()
     {
         $pengumuman = Pengumuman::latest()->get();
         return view('pengumuman.admin', compact('pengumuman'));

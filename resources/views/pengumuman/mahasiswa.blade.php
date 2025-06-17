@@ -1,6 +1,3 @@
-@extends('layout') 
-
-@section('content')
 
 <div class="container mt-4">
     <a href="{{ route('index') }}" class="btn btn-secondary mb-3">Kembali ke Beranda</a>
@@ -18,4 +15,3 @@
     @endforeach
 
 </div>
-@endsection
