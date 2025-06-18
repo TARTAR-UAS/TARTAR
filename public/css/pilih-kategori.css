@@ -9,8 +9,7 @@ body{
     grid-template-areas: 
     'header'
     'navbar-area'
-    'biodata-area'
-    'table-pendidikan';
+    'kategori';
     column-gap: 5px;
 }
 
@@ -84,12 +83,23 @@ body{
    background-color: rgb(24, 16, 109);
 }
 
-.biodata-area {
-    grid-area: biodata-area;
+.kategori {
+    justify-self: center;
+    grid-area: kategori;
     margin: 10px;
 }
 
-.biodata-area h2{
+.kategori h2{
+    text-align: center;
+    font-family: Segoe UI;
+    font-weight: bold;
+    color: rgb(20, 12, 108);
+    margin-bottom: 5px;
+    margin-left: 30px;
+}
+
+.kategori h3{
+    text-align: center;
     font-family: Segoe UI;
     font-weight: bold;
     color: rgb(20, 12, 108);
@@ -97,64 +107,8 @@ body{
     margin-left: 30px;
 }
 
-.biodata-area table, th, td {
-    border: solid 2px rgb(7, 12, 90);
-    border-collapse: collapse;
-}
 
-.biodata-area table {
-  margin: 5px 0px 5px 30px;
-}
-
-.biodata-area th, td {
-    padding: 5px;
-}
-
-.biodata-area th {
-    font-family: Helvetica;
-    background: rgb(34, 25, 135);
-    color: rgb(236, 236, 236);
-    font-weight: bold;
-}
-
-.biodata-area td {
-    font-family: Arial;
-    font-weight: bold;
-    width: 85%;
-}
-
-.table-pendidikan{
-    grid-area: table-pendidikan;
-}
-
-.table-pendidikan h2{
-    font-family: Segoe UI;
-    font-weight: bold;
-    color: rgb(20, 12, 108);
-    margin-bottom: 15px;
-    margin-left: 30px;
-}
-
-.table-pendidikan table {
-  margin: 5px 0px 0px 30px;
-}
-
-.table-pendidikan th {
-    font-family: Helvetica;
-    background: rgb(34, 25, 135);
-    color: rgb(236, 236, 236);
-    font-weight: bold;
-    padding: 5px;
-    width: 150px;
-}
-
-
-.table-pendidikan tr {
-    font-family: Arial;
-    font-weight: bold;
-}
-
-.ajukan-button{
+.kategori button{
     text-align: center;
     font-family: Arial;
     font-weight: bold;
@@ -170,7 +124,7 @@ body{
     text-decoration: none;
 }
 
-.ajukan-button:hover {
+.kategori button:hover {
     background:rgb(20, 12, 108);
 }
 

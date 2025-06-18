@@ -49,10 +49,16 @@ class MahasiswaController extends Controller
         $user = Auth::user();
         $mahasiswa = $user->mahasiswa;
 
-        $dataPerubahan = $request->only([
-        'nama_depan', 'nama_belakang', 'jenis_kelamin', 'agama',
-        'tanggal_lahir','tempat_lahir', 'alamat',
-        'program_studi','fakultas', 
+        $dataPerubahan = $request->validate([
+        'nama_depan'     => ['required', 'max:255'],
+        'nama_belakang'  => ['required', 'max:255'],
+        'jenis_kelamin'  => ['required'],
+        'agama'          => ['required'],
+        'tanggal_lahir'  => ['required'],
+        'tempat_lahir'   => ['required', 'max:255'],
+        'alamat'         => ['required', 'max:255'],
+        'program_studi'  => ['required', 'max:255'],
+        'fakultas'       => ['required', 'max:255'],
         ]);
 
         BiodataChangeRequest::create([
@@ -69,9 +75,13 @@ class MahasiswaController extends Controller
         $user = Auth::user();
         $mahasiswa = $user->mahasiswa;
 
-        $dataPerubahan = $request->only([
-        'nama_ayah', 'pekerjaan_ayah', 'no_telp_ayah', 
-        'nama_ibu', 'pekerjaan_ibu', 'no_telp_ibu',
+        $dataPerubahan = $request->validate([
+        'nama_ayah' => ['required', 'max:255'], 
+        'pekerjaan_ayah' => ['required', 'max:255'], 
+        'no_telp_ayah' => ['required', 'max:255'], 
+        'nama_ibu' => ['required', 'max:255'], 
+        'pekerjaan_ibu' => ['required', 'max:255'], 
+        'no_telp_ibu'=> ['required', 'max:255'],
         ]);
 
         BiodataChangeRequest::create([
@@ -88,10 +98,14 @@ class MahasiswaController extends Controller
         $user = Auth::user();
         $mahasiswa = $user->mahasiswa;
 
-        $dataPerubahan = $request->only([
-        'nama_sekolah', 'jenis_sekolah', 'jurusan',
-        'tanggal_masuk', 'tanggal_lulus', 'lokasi_sekolah',
-        'nilai_akhir', 
+        $dataPerubahan = $request->validate([
+        'nama_sekolah' => ['required', 'max:255'], 
+        'jenis_sekolah' => ['required'], 
+        'jurusan' => ['required', 'max:255'],
+        'tanggal_masuk' => ['required'], 
+        'tanggal_lulus' => ['required'], 
+        'lokasi_sekolah' => ['required', 'max:255'],
+        'nilai_akhir' => ['required', 'numeric', 'between:0,100'], 
         ]);
 
         BiodataChangeRequest::create([
