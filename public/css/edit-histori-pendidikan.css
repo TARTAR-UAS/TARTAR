@@ -1,0 +1,159 @@
+body{
+    background-color: rgb(232, 244, 255);
+}
+
+.parent-container{
+    display: grid;
+    grid-template-areas: 
+    'top-text'
+    'form-area';
+    height: 90vh;
+    place-items: center;
+}
+
+.top-text{
+    color: rgb(34, 26, 124);
+    grid-area: 'top-text';
+    justify-self: center;
+    width: 550px;
+}
+
+.top-text h2{
+    text-align: center;
+    font-family: 'Helvetica'; 
+    margin-top: 20px;
+}
+
+.form-area{
+    padding: 30px 10px 20px 30px;
+    grid-area: 'form-area';
+    background-color: white;
+    border: 1px hidden;
+    border-radius: 20px;
+    box-shadow: 0 4px 6px rgb(0,0,0,0.2);
+    width: 600px;
+    height: 470px;
+}
+
+.form-area label{
+    font-family: Arial; 
+    width: 120px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: left;
+    font-size:16px;
+    font-weight: bold;
+    color: rgb(14, 8, 88);
+}
+
+
+.form-area input{
+    font-family: Arial; 
+    width: 530px;
+    border: 1px hidden;
+    border-radius: 5px;
+    box-shadow: 4px 4px 2px rgb(0,0,0,0.25);
+    font-size:15px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    margin-bottom: 10px;
+}
+
+.form-area select{
+    font-family: Arial; 
+    width: 530px;
+    border: 1px hidden;
+    border-radius: 5px;
+    box-shadow: 4px 4px 2px rgb(0,0,0,0.25);
+    font-size:15px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    margin-bottom: 10px;
+}
+
+.button-wrapper{
+    display:flex;
+    justify-content: center;
+}
+
+.form-area button{
+    margin:10px 15px 0px 0px;
+    text-align: center;
+    font-family: Arial; 
+    background-color: rgb(41, 31, 145);
+    color: white;
+    width: 200px;
+    border: hidden;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    padding: 5px;
+}
+
+.form-area button:hover {
+    background-color: rgb(24, 16, 109);
+}
+
+/*Pengaturan alert container untuk error*/
+.alert-container{
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    background: rgba(255, 255, 255, 0.8);
+    width: 100vw;
+    height: 100vh;
+    border-radius: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+.alert-box{
+    background: #fdfffa;
+    padding: 30px;
+    border: hidden 2px;
+    border-radius: 10px;
+    box-shadow: 4px 4px 2px rgb(0,0,0,0.25);
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+}
+
+.alert-box h2{
+   font-family: 'Helvetica'; 
+   color:  rgb(41, 31, 145);
+   margin-bottom: 25px;
+}
+
+.alert-box ul{
+   text-align: left;
+   list-style-type: none;
+   margin: 0;
+   padding: 0;
+}
+
+.alert-box li{
+   font-family: 'Arial'; 
+   text-align: left;
+   margin-bottom: 10px;
+}
+
+.alert-box button {
+    font-family: 'Helvetica'; 
+    padding: 10px 20px;
+    background-color: rgb(41, 31, 145);
+    color: white;
+    border: hidden;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.alert-box button:hover {
+    background-color: rgb(24, 16, 109);
+}
+
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
