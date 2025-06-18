@@ -10,6 +10,8 @@ use App\Models\Pembayaran;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Pengumuman;
+use App\Models\PengajuanStudi;
+
 class AdminController extends Controller {
 
     public function layoutAdmin(){
@@ -169,5 +171,43 @@ class AdminController extends Controller {
         $pengumuman->delete();
 
         return redirect()->route('pengumuman-admin')->with('success', 'Pengumuman berhasil dihapus.');
+    }
+
+    public function listPengajuanStudi()
+    {
+        $pengajuan = PengajuanStudi::with('mahasiswa','mataKuliah')->where('status', 'pending')->get();
+        return view('admin.pengajuan-studi-admin', compact('pengajuan'));
+    }
+
+    public function setujuiPengajuanStudi($id)
+    {
+        $pengajuan = PengajuanStudi::findOrFail($id);
+        $pengajuan->status = 'disetujui';
+        $pengajuan->save();
+
+        $jumlah = $pengajuan->mataKuliah->count() * 2000000;
+
+        Pembayaran::create([
+            'mahasiswa_id' => $pengajuan->mahasiswa_id,
+            'tahun' => now()->year,
+            'jenis' => 'Rencana Studi',
+            'va' => rand(100000000, 999999999),
+            'batas' => now()->addWeeks(2),
+            'jumlah' => $jumlah,
+            'bank' => 'BNI',
+            'status' => 'Belum Lunas'
+        ]);
+
+        return back()->with('success', 'Pengajuan disetujui dan tagihan dibuat.');
+    }
+
+    public function tolakPengajuanStudi(Request $request, $id)
+    {
+        $pengajuan = PengajuanStudi::findOrFail($id);
+        $pengajuan->status = 'ditolak';
+        $pengajuan->alasan = $request->alasan;
+        $pengajuan->save();
+
+        return back()->with('error', 'Pengajuan ditolak.');
     }
 }
