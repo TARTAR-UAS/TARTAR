@@ -1,0 +1,181 @@
+body {
+    background-color: rgb(232, 244, 255);
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.parent-container {
+    display: grid;
+    grid-template-columns: 20% 1fr;
+    grid-template-areas: 
+        'sidebar content';
+    height: 100vh;
+}
+
+.sidebar {
+    grid-area: sidebar;
+    background-color: rgb(26, 40, 77);
+    height: 100%;
+}
+
+.header {
+    padding: 10px;
+    text-align: center;
+    border-bottom: 1px solid rgb(113, 141, 206);
+    background-color: rgb(26, 40, 77);
+}
+
+.header h1 {
+    font-size: 36px;
+    color: white;
+    font-weight: bold;
+    font-family: Verdana;
+}
+
+.header h3 {
+    font-size: 18px;
+    color: white;
+    font-weight: bold;
+    font-family: Verdana;
+}
+
+#navbar {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    background-color: rgb(35, 31, 102);
+}
+
+#navbar li {
+    border-bottom: 1px solid rgb(113, 141, 206);
+}
+
+#navbar a {
+    display: block;
+    padding: 20px 30px;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 18px;
+    font-family: Arial;
+}
+
+#navbar li:hover {
+    background-color: rgb(24, 16, 109);
+}
+
+.logout-container {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.logout-button {
+    background-color: rgb(14, 35, 94);
+    color: white;
+    padding: 8px 14px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.logout-button:hover {
+    background-color: rgb(59, 74, 124);
+}
+
+.content-area {
+    grid-area: content;
+    padding: 30px;
+}
+
+.content-area h1 {
+    color: rgb(20, 12, 108);
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.alert {
+    padding: 10px;
+    background-color: rgb(220, 236, 255);
+    color: rgb(20, 12, 108);
+    border-left: 5px solid rgb(34, 25, 135);
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+
+.pengajuan-box {
+    background-color: white;
+    border: 2px solid rgb(157, 157, 159);
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+}
+
+.pengajuan-box h3 {
+    color: rgb(26, 40, 77);
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.pengajuan-box p {
+    margin: 4px 0;
+    font-size: 16px;
+    color: rgb(20, 12, 108);
+}
+
+.pengajuan-box ul {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding-left: 20px;
+}
+
+.pengajuan-box li {
+    margin: 4px 0;
+    color: rgb(20, 12, 108);
+}
+
+.pengajuan-box input[type="text"],
+.pengajuan-box textarea {
+    width: 100%;
+    padding: 8px;
+    margin-top: 6px;
+    margin-bottom: 10px;
+    border: 1px solid #bbb;
+    border-radius: 5px;
+    font-family: Arial;
+}
+
+.pengajuan-box button {
+    padding: 8px 16px;
+    margin-right: 8px;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    color: white;
+    font-family: Arial;
+}
+
+.pengajuan-box .btn-success {
+    background-color: rgb(57, 46, 173);
+}
+
+.pengajuan-box .btn-success:hover {
+    background-color: rgb(20, 12, 108);
+}
+
+.pengajuan-box .btn-danger {
+    background-color: rgb(199, 62, 62);
+}
+
+.pengajuan-box .btn-danger:hover {
+    background-color: rgb(160, 43, 43);
+}
+
+hr {
+    margin-top: 20px;
+    border: none;
+    border-top: 1px solid #ccc;
+}

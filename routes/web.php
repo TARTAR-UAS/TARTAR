@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\PengumumanController;
+use App\Http\Controllers\PengajuanStudiController;
 
 use function Pest\Laravel\put;
 
@@ -59,6 +60,9 @@ Route::post('/ajukan/orangtua', [MahasiswaController::class, 'ajukanPerubahanOra
 Route::post('/ajukan/pendidikan', [MahasiswaController::class, 'ajukanPerubahanPendidikan'])->name('form-pengubahan-pendidikan');
 Route::get('/akademik', [MahasiswaController::class, 'showAkademik'])->name('akademik');
 
+Route::get('/pengajuan-studi', [PengajuanStudiController::class, 'create'])->name('pengajuan-studi');
+Route::post('/pengajuan-studi', [PengajuanStudiController::class, 'store'])->name('pengajuan-studi.store');
+
 Route::get('/edit-biodata', [AdminController::class, 'layoutAdmin'])->name('layout-admin');
 Route::get('/admin/permintaan-biodata', [AdminController::class, 'listPermintaanBiodata'])->name('permintaan-biodata');
 Route::post('/admin/permintaan-biodata/setujui/{id}', [AdminController::class, 'setujuiPermintaan'])->name('terima-perubahan');
@@ -68,6 +72,10 @@ Route::post('/admin/pembayaran/{id}/ubah-status', [AdminController::class, 'ubah
 Route::get('/admin/manajemen-akun', [AdminController::class, 'showManajemenAkun'])->name('manajemen-akun');
 Route::post('/admin/manajemen-akun/terima/{id}', [AdminController::class, 'terimaVerifikasi'])->name('terima-verifikasi');
 Route::post('/admin/manajemen-akun/tolak/{id}', [AdminController::class, 'tolakVerifikasi'])->name('tolak-verifikasi');
+
+Route::get('/admin/pengajuan-studi', [AdminController::class, 'listPengajuanStudi'])->name('pengajuan-studi-admin');
+Route::post('/admin/pengajuan-studi/setujui/{id}', [AdminController::class, 'setujuiPengajuanStudi'])->name('setujui-pengajuan-studi');
+Route::post('/admin/pengajuan-studi/tolak/{id}', [AdminController::class, 'tolakPengajuanStudi'])->name('tolak-pengajuan-studi');
 
 
 Route::get('/pengumuman', [PengumumanController::class, 'index']) ->name('pengumuman');
