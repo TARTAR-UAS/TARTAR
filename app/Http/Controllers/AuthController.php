@@ -30,8 +30,8 @@ class AuthController extends Controller
         $biodata = $request->validate([
             'nama_depan' => ['required', 'max:255'],
             'nama_belakang' => ['required', 'max:255'],
-            'jenis_kelamin' => ['required'],
-            'agama' => ['required'],
+            'jenis_kelamin' => ['required', 'in:Laki-laki,Perempuan'],
+            'agama' => ['required','in:Islam,Kristen,Katolik,Buddha,Hindu,Konghucu'],
             'tanggal_lahir' => ['required'],
             'tempat_lahir' => ['required', 'max:255'],
             'alamat' => ['required', 'max:255'],
@@ -60,7 +60,7 @@ class AuthController extends Controller
     public function register2(Request $request){
         $akademik = $request->validate([
             'nama_sekolah' => ['required', 'max:255'],
-            'jenis_sekolah' => ['required'],
+            'jenis_sekolah' => ['required','in:SMA,SMK,MA'],
             'jurusan' => ['required', 'max:255'],
             'tanggal_masuk' => ['required'],
             'tanggal_lulus' => ['required'],

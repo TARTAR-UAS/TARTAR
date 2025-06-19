@@ -13,8 +13,10 @@
           <li><a href="{{ route('index') }}">Home</a></li>
           <li><a href="{{ route('biodata') }}">Biodata</a></li>
           <li><a href="{{ route('akademik') }}">Akademik</a></li>
-          <li><a href="{{ route('pembayaran') }}">Informasi Pembayaran</a></li>
+          <li><a href="{{ route('pembayaran') }}">Pembayaran</a></li>
+          <li><a href="{{ route('pengajuan-studi')}}">PengajuanStudi</a></li>
           <li><a href="{{ route('pengumuman') }}">Pengumuman</a></li>
+          <li><a href="{{ route('status-wisuda') }}">Status Wisuda</a></li>
          </ul>
         </div>
         @auth

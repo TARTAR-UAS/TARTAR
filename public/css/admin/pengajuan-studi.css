@@ -7,7 +7,7 @@ body {
     display: grid;
     grid-template-columns: 20% 1fr;
     grid-template-areas: 
-        'sidebar content';
+     'sidebar content';
     height: 100vh;
 }
 
@@ -24,43 +24,55 @@ body {
     background-color: rgb(26, 40, 77);
 }
 
-.header h1 {
-    font-size: 36px;
-    color: white;
-    font-weight: bold;
+.header h1{
     font-family: Verdana;
+    font-size: 40px;
+    color:white;
+    font-weight: bold;
 }
 
-.header h3 {
-    font-size: 18px;
-    color: white;
-    font-weight: bold;
+.header h3{
     font-family: Verdana;
+    font-size: 20px;
+    color:white;
+    font-weight: bold;
 }
 
-#navbar {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+
+.navbar-area {
+    grid-area: navbar-area;
+}
+
+#navbar{
+    display: flex;
+    flex-wrap: wrap;
+    list-style-type: none;
+    margin:0;
+    padding:0;
     background-color: rgb(35, 31, 102);
 }
 
-#navbar li {
+.navbar-area li{
+    text-align: left;
+    align-items: center;
+    font-weight: bold;
+    font-family: arial;
+    display: block;
+    height: 100px;
+    width: 100%;
     border-bottom: 1px solid rgb(113, 141, 206);
 }
 
-#navbar a {
-    display: block;
-    padding: 20px 30px;
+.navbar-area a{
     color: white;
+    display: block;
+    font-size: 20px;
+    padding: 40px 0 0 40px;
     text-decoration: none;
-    font-weight: bold;
-    font-size: 18px;
-    font-family: Arial;
 }
 
-#navbar li:hover {
-    background-color: rgb(24, 16, 109);
+.navbar-area li:hover {
+   background-color: rgb(24, 16, 109);
 }
 
 .logout-container {
@@ -178,4 +190,10 @@ hr {
     margin-top: 20px;
     border: none;
     border-top: 1px solid #ccc;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }

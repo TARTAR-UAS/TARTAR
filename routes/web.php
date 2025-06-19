@@ -81,7 +81,6 @@ Route::post('/admin/pengajuan-studi/tolak/{id}', [AdminController::class, 'tolak
 
 
 Route::get('/pengumuman', [PengumumanController::class, 'index']) ->name('pengumuman');
-
 Route::get('/admin/pengumuman', [AdminController::class, 'pengumumanAdmin']) ->name('pengumuman-admin');
 Route::get('/admin/pengumuman/create', [AdminController::class, 'pengumumanCreate'])->name('pengumuman-create');
 Route::post('/admin/pengumuman', [AdminController::class, 'pengumumanStore']) ->name('pengumuman-store');
@@ -89,7 +88,13 @@ Route::get('/admin/pengumuman/edit/{id}', [AdminController::class, 'pengumumanEd
 Route::put('/admin/pengumuman/{id}', [AdminController::class, 'pengumumanUpdate'])->name('pengumuman-update');
 Route::delete('/admin/pengumuman/{id}', [AdminController::class, 'pengumumanDelete']) ->name('pengumuman-delete');
 
-Route::get('/admin/status-wisuda', [WisudaController::class, 'showForm'])->name('status-wisuda.form');
-Route::post('/admin/status-wisuda', [WisudaController::class, 'storeStatus'])->name('update.status');
+Route::get('/akademik/histori', [AkademikController::class, 'histori'])->name('akademik.histori');
+Route::get('/akademik/jadwal', [AkademikController::class, 'jadwal'])->name('akademik.jadwal');
+Route::get('/akademik/status-kuliah', [AkademikController::class, 'statusKuliah'])->name('akademik.status-kuliah');
 
+
+Route::get('/admin/wisuda', [WisudaController::class, 'listPengajuan'])->name('admin-wisuda-index');
+Route::post('/admin/wisuda/{id}', [WisudaController::class, 'updatePengajuan'])->name('admin-wisuda-update');
 Route::get('/mahasiswa/status-wisuda', [WisudaController::class, 'showStatus'])->name('status-wisuda');
+Route::get('/mahasiswa/pengajuan-wisuda', [WisudaController::class, 'showWisudaForm'])->name('form-wisuda');
+Route::post('/mahasiswa/pengajuan-wisuda', [WisudaController::class, 'wisudaForm'])->name('form-wisuda-store');

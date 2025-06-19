@@ -1,0 +1,127 @@
+body {
+    background-color: rgb(232, 244, 255);
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.parent-container {
+    display: grid;
+    grid-template-areas:
+        "header"
+        "navbar-area"
+        "menu-akademik";
+    grid-template-columns: 1fr;
+}
+
+.logout-container {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.logout-button {
+    background-color: rgb(14, 35, 94);
+    color: white;
+    padding: 8px 14px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.logout-button:hover {
+    background-color: rgb(59, 74, 124);
+}
+
+.header {
+    grid-area: header;
+    font-family: Verdana;
+    font-size: 50px;
+    color: rgb(20, 12, 108);
+    font-weight: bold;
+    text-align: center;
+    padding: 10px 0;
+}
+
+.navbar-area {
+    grid-area: navbar-area;
+    margin-bottom: 10px;
+}
+
+#navbar{
+    position: sticky;
+    top: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    list-style-type: none;
+    margin:0;
+    padding:0;
+    overflow: hidden;
+    height: 20px;
+    background-color: rgb(41, 31, 145);
+}
+
+.navbar-area li{
+    text-align: center;
+    font-weight: bold;
+    font-family: arial;
+    display: inline;
+    height: 200px;
+    width: 150px;
+}
+
+.navbar-area a{
+    color: white;
+    width: 100px;
+    display: inline;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.navbar-area li:hover{
+   background-color: rgb(24, 16, 109);
+}
+
+.menu-akademik {
+    grid-area: menu-akademik;
+    padding: 30px;
+    text-align: center;
+}
+
+.menu-akademik h2 {
+    font-size: 40px;
+    font-family: Segoe UI;
+    font-weight: bold;
+    color: rgb(20, 12, 108);
+    margin-bottom: 20px;
+}
+
+.menu-list {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.menu-item {
+    background-color: rgb(57, 46, 173);
+    color: white;
+    text-decoration: none;
+    padding: 15px 25px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 8px;
+}
+
+.menu-item:hover {
+    background-color: rgb(24, 16, 109);
+}
+
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}

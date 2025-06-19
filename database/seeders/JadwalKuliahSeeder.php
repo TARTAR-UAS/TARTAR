@@ -11,7 +11,7 @@ class JadwalKuliahSeeder extends Seeder
     {
         DB::table('jadwal_kuliah')->insert([
             [
-                'nim' => '5352001',
+        
                 'mata_kuliah' => 'Algoritma dan Pemrograman',
                 'hari' => 'Senin',
                 'jam_mulai' => '08:00',
@@ -21,7 +21,6 @@ class JadwalKuliahSeeder extends Seeder
                 'updated_at' => now(),
             ],
             [
-                'nim' => '5352001',
                 'mata_kuliah' => 'Struktur Data',
                 'hari' => 'Rabu',
                 'jam_mulai' => '10:00',
@@ -31,7 +30,6 @@ class JadwalKuliahSeeder extends Seeder
                 'updated_at' => now(),
             ],
             [
-                'nim' => '5352001',
                 'mata_kuliah' => 'Basis Data',
                 'hari' => 'Jumat',
                 'jam_mulai' => '13:00',

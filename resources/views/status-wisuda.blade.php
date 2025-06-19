@@ -1,86 +1,53 @@
-<!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Status Wisuda</title>
-    <!-- Link ke Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        body {
-            background-color: #f4f6f9;
-            font-family: Arial, sans-serif;
-        }
-        .back-btn {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background-color: #007bff;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 5px;
-            text-decoration: none;
-        }
-        .back-btn:hover {
-            background-color: #0056b3;
-        }
-        .card {
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            margin-top: 50px;
-        }
-        .card-header {
-            background-color: #0069d9;
-            color: white;
-            text-align: center;
-            font-size: 24px;
-            padding: 20px;
-            border-radius: 10px 10px 0 0;
-        }
-        .card-body {
-            padding: 30px;
-        }
-        .btn-primary {
-            background-color: #0069d9;
-            border-color: #0056b3;
-            padding: 10px 20px;
-        }
-        .btn-primary:hover {
-            background-color: #0056b3;
-        }
-    </style>
+    <link rel="stylesheet" href="{{ asset('css/status-wisuda.css') }}">
 </head>
 <body>
-
-<!-- Tombol Back di pojok kanan atas -->
-@auth
-    <a href="{{ route('index') }}" class="back-btn">Back</a>
-@endauth
-
-<div class="container">
-    <h1 class="mt-3">Status Wisuda</h1>
-    <div class="card">
-        <div class="card-header">
-            Status Wisuda Mahasiswa
+    <div class='parent-container'>
+        <div class ='header'>TARTAR</div>
+        <div class= 'navbar-area'>
+            <ul id='navbar'>
+                <li><a href="{{ route('index') }}">Home</a></li>
+                <li><a href="{{ route('biodata') }}">Biodata</a></li>
+                <li><a href="{{ route('akademik') }}">Akademik</a></li>
+                <li><a href="{{ route('pembayaran') }}">Informasi Pembayaran</a></li>
+                <li><a href="{{ route('pengajuan-studi')}}">PengajuanStudi</a></li>
+                <li><a href="{{ route('pengumuman') }}">Pengumuman</a></li>
+                <li><a href="{{ route('status-wisuda') }}">Status Wisuda</a></li>
+            </ul>
         </div>
-        <div class="card-body">
-            @if($mahasiswa)
-                <h5 class="card-title">{{ $mahasiswa->nama_depan }} {{ $mahasiswa->nama_belakang }}</h5>
-                <p class="card-text">NIM: {{ $mahasiswa->npm }}</p>
-                <p class="card-text">Angkatan: {{ $mahasiswa->angkatan }}</p>
-                <p class="card-text">Status Wisuda: <strong>{{ $mahasiswa->status_wisuda }}</strong></p>
-                
-                <!-- Tombol untuk melihat detail status wisuda -->
-                <a href="{{ route('status-wisuda', ['id' => $mahasiswa->id]) }}" class="btn btn-primary">Lihat Status Wisuda</a>
-            @else
-                <p>Data mahasiswa tidak tersedia</p>
-            @endif
+
+        @auth
+        <div class="logout-container">
+            <form method="POST" action="{{ route('logout') }}">
+                @csrf
+                <button type="submit" class="logout-button">Logout</button>
+            </form>
+        </div>
+        @endauth
+
+        <div class="wisuda-container">
+            <h2>Status Wisuda</h2>
+
+            <div class="card">
+                    @if($mahasiswa && $mahasiswa->wisuda)
+                        <h5>{{ $mahasiswa->nama_depan }} {{ $mahasiswa->nama_belakang }}</h5>
+                        <p><span>NIM: </span>{{ $mahasiswa->npm }}</p>
+                        <p><span>Angkatan: </span>{{ $mahasiswa->angkatan }}</p>
+                        <p><span>IPK Akhir: </span>{{ $mahasiswa->wisuda->ipk_akhir ?? 'Belum tersedia' }}</p>
+                        <p><span>Tanggal Pengajuan: </span>{{ $mahasiswa->wisuda->tanggal_pengajuan ?? 'Belum tersedia' }}</p>
+                        <p><span>Status Wisuda: </span><strong>{{ $mahasiswa->wisuda->status }}</strong></p>
+                    @else
+                        <span>Belum ada data pengajuan wisuda.</span>
+                        <div class="button-wrapper">
+                        <a href='{{route('form-wisuda')}}'><button type="button"> Ajukan Wisuda </button></a>
+                        </div>
+                    @endif
+            </div>
         </div>
     </div>
-</div>
-
-<!-- Link ke Bootstrap JS (untuk interaktivitas) -->
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
 </body>
 </html>

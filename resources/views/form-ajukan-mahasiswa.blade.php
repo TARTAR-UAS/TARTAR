@@ -20,11 +20,13 @@
             <input type='text' name='nama_belakang' placeholder='ex: Betradius'><br>
             <label>Jenis Kelamin: </label><br>
             <select name='jenis_kelamin'>
+                <option value="" disabled selected hidden>-- Pilih Jenis Kelamin --</option>
                 <option value='Laki-laki'>Laki-laki</option>
                 <option value='Laki-laki'>Perempuan</option>
             </select><br>
             <label>Agama: </label><br>
             <select name='agama'>
+                <option value="" disabled selected hidden>-- Pilih Agama --</option>
                 <option value='Islam'>Islam</option>
                 <option value='Kristen'>Kristen</option>
                 <option value='Katolik'>Katolik</option>
