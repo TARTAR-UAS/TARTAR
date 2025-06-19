@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\PengumumanController;
 use App\Http\Controllers\PengajuanStudiController;
+use App\Http\Controllers\AkademikController;
 
 use function Pest\Laravel\put;
 
@@ -86,3 +87,12 @@ Route::post('/admin/pengumuman', [AdminController::class, 'pengumumanStore']) ->
 Route::get('/admin/pengumuman/edit/{id}', [AdminController::class, 'pengumumanEdit'])->name('pengumuman-edit');
 Route::put('/admin/pengumuman/{id}', [AdminController::class, 'pengumumanUpdate'])->name('pengumuman-update');
 Route::delete('/admin/pengumuman/{id}', [AdminController::class, 'pengumumanDelete']) ->name('pengumuman-delete');
+
+
+// routes/web.php
+Route::get('/akademik/histori', [AkademikController::class, 'histori'])->name('akademik.histori');
+Route::get('/akademik/nilai', [AkademikController::class, 'nilai'])->name('akademik.nilai');
+Route::get('/akademik/jadwal', [AkademikController::class, 'jadwal'])->name('akademik.jadwal');
+Route::get('/akademik/kehadiran', [AkademikController::class, 'kehadiran'])->name('akademik.kehadiran');
+Route::get('/akademik/transkrip', [AkademikController::class, 'transkrip'])->name('akademik.transkrip');
+Route::get('/akademik/status-kuliah', [AkademikController::class, 'statusKuliah'])->name('akademik.status-kuliah');
