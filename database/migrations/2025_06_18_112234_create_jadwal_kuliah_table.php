@@ -14,7 +14,6 @@ return new class extends Migration
     {
         Schema::create('jadwal_kuliah', function (Blueprint $table) {
             $table->id();
-            $table->string('nim');
             $table->string('mata_kuliah');
             $table->string('hari');
             $table->time('jam_mulai');

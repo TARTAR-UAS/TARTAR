@@ -19,6 +19,7 @@
             <input type='text' name='nama_sekolah' value="{{ old('nama_sekolah', session('register.nama_sekolah')) }}" placeholder='ex: SMA Budi Luhur'><br>
             <label>Jenis Sekolah: </label><br>
             <select name='jenis_sekolah' value="{{ old('jenis_sekolah', session('register.jenis_sekolah')) }}">
+                <option value="" disabled selected hidden>-- Pilih Jenis Sekolah --</option>
                 <option value='SMA'> SMA </option>
                 <option value='SMK'> SMK </option>
                 <option value='MA'> MA </option>

@@ -12,4 +12,9 @@ class MataKuliah extends Model
     public function pengajuanStudi() {
         return $this->belongsToMany(PengajuanStudi::class, 'mata_kuliah_pengajuan');
     }
+
+    public function nilaiMahasiswa(){
+        return $this->hasMany(NilaiMahasiswa::class);
+    } 
+
 }

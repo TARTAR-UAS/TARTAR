@@ -16,16 +16,16 @@ class AkademikController extends Controller
     
    
     public function histori() {
-        $nama = Auth::user()->name; // ambil nama dari user yang login
-        $data = NilaiMahasiswa::where('nama', $nama)->get(); // query berdasarkan nama
-        return view('akademik.histori', compact('data'));
-   
-        
+    $mahasiswa = Auth::user()->mahasiswa;
+
+    $data = $mahasiswa
+        ->nilaiMahasiswa()
+        ->with('mata_kuliah') // pastikan eager loading relasi
+        ->get();
+
+    return view('akademik.histori', compact('data'));
     }
 
-    public function nilai() {
-        return view('akademik.nilai');
-    }
 
     public function jadwal() {
     
@@ -33,16 +33,11 @@ class AkademikController extends Controller
         return view('akademik.jadwal', compact('jadwal'));
     }
 
-    public function kehadiran() {
-        return view('akademik.kehadiran');
-    }
 
-    public function transkrip() {
-        return view('akademik.transkrip');
-    }
     public function statusKuliah()
     {
-    return view('akademik.status-kuliah'); // pastikan view ini ada di resources/views/akademik
+        $mahasiswa = Auth::user()->mahasiswa;
+        return view('akademik.status-kuliah', compact('mahasiswa')); 
     }
 
    }

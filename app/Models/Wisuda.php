@@ -7,7 +7,17 @@ use Illuminate\Database\Eloquent\Model;
 
 class Wisuda extends Model
 {
-    use HasFactory;
 
-    protected $fillable = ['mahasiswa_id', 'status'];
+    protected $table = 'wisuda';
+
+    protected $fillable = [
+        'mahasiswa_id',
+        'status',
+        'ipk_akhir',
+        'tanggal_pengajuan',
+    ];
+    public function mahasiswa(){
+        return $this->belongsTo(Mahasiswa::class);
+    }
+
 }

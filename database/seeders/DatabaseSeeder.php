@@ -24,8 +24,9 @@ class DatabaseSeeder extends Seeder
 
         $this->call([
         MahasiswaSeeder::class,
-        NilaiMahasiswaSeeder::class,
+        MataKuliahSeeder::class,
         JadwalKuliahSeeder::class,
-    ]);
+        NilaiMahasiswaSeeder::class,
+        ]);
     }
 }

@@ -14,12 +14,13 @@
                 <h3>Admin Dashboard</h3>
              </div>
           <ul id='navbar'>
-           <li><a href="{{ route('admin-index') }}">Home</a></li>
-           <li><a href="{{route('manajemen-akun')}}">Manajemen Akun</a></li>
+            <li><a href="{{ route('admin-index') }}">Home</a></li>
+           <li><a href="{{ route('manajemen-akun') }}">Manajemen Akun</a></li>
            <li><a href="{{ route('permintaan-biodata') }}">Biodata</a></li>
-           <li><a href="">Akademik</a></li>
+           <li><a href="{{ route('pengajuan-studi-admin') }}">Pengajuan Studi</a></li>
            <li><a href="{{ route('list-pembayaran') }}">Informasi</a></li>
            <li><a href="{{ route('pengumuman-admin') }}">Pengumuman</a></li>
+           <li><a href="{{ route('admin-wisuda-index') }}">Status Wisuda</a></li>
          </ul>
          </div>
         </div>

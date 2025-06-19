@@ -47,4 +47,12 @@ class Mahasiswa extends Model
     public function pengajuanStudi() {
         return $this->hasMany(pengajuanStudi::class);
     }
+
+    public function nilaiMahasiswa(){
+        return $this->hasMany(NilaiMahasiswa::class);
+    }
+
+    public function Wisuda(){
+        return $this->hasOne(Wisuda::class);
+    }
 }
