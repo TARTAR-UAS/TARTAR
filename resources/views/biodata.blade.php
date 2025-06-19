@@ -87,12 +87,19 @@
                 <td>{{ $mahasiswa->orangtua->no_telp_ayah }}</td>
              </tr>
             <tr>
+                <th>Pekerjaan Ayah</th>
+                <td>{{ $mahasiswa->orangtua->pekerjaan_ayah }}</td>
+            <tr>
                 <th>Nama Ibu</th>
                 <td>{{ $mahasiswa->orangtua->nama_ibu }}</td>
             </tr>
             <tr>
                 <th>No Telp Ibu</th>
                 <td>{{ $mahasiswa->orangtua->no_telp_ibu }}</td>
+            </tr>
+            <tr>
+                <th>Pekerjaan Ibu</th>
+                <td>{{ $mahasiswa->orangtua->pekerjaan_ibu }}</td>
             </tr>
         </table>
         </div>
