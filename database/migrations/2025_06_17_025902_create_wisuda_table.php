@@ -11,8 +11,8 @@ class CreateWisudaTable extends Migration
         Schema::create('wisuda', function (Blueprint $table) {
             $table->id();
             $table->foreignId('mahasiswa_id')->constrained('mahasiswa')->onDelete('cascade');  
-            $table->float('ipk_akhir', 3, 2)->nullable(); 
-            $table->date('tanggal_pengajuan')->nullable();
+            $table->float('ipk_akhir', 3, 2); 
+            $table->date('tanggal_pengajuan');
             $table->text('status');  
             $table->timestamps();
         });
