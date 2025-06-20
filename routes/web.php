@@ -65,7 +65,6 @@ Route::get('/akademik', [MahasiswaController::class, 'showAkademik'])->name('aka
 Route::get('/pengajuan-studi', [PengajuanStudiController::class, 'create'])->name('pengajuan-studi');
 Route::post('/pengajuan-studi', [PengajuanStudiController::class, 'store'])->name('pengajuan-studi.store');
 
-Route::get('/edit-biodata', [AdminController::class, 'layoutAdmin'])->name('layout-admin');
 Route::get('/admin/permintaan-biodata', [AdminController::class, 'listPermintaanBiodata'])->name('permintaan-biodata');
 Route::post('/admin/permintaan-biodata/setujui/{id}', [AdminController::class, 'setujuiPermintaan'])->name('terima-perubahan');
 Route::post('/admin/permintaan-biodata/tolak/{id}', [AdminController::class, 'tolakPermintaan'])->name('tolak-perubahan');
