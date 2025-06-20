@@ -14,10 +14,6 @@ use App\Models\PengajuanStudi;
 
 class AdminController extends Controller {
 
-    public function layoutAdmin(){
-        return view('layout-admin');
-    }
-
     public function showManajemenAkun(){
         $queryMahasiswaPending = Mahasiswa::where('status_akun', 'Pending');
         $mahasiswaPending = $queryMahasiswaPending->paginate(10);
